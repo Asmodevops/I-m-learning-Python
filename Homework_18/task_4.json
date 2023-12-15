@@ -1,0 +1,28 @@
+{
+    "team_tasks": [
+        {
+            "task_id": 1,
+            "title": "Develop feature X",
+            "description": "Implement new functionality",
+            "assignee": "John",
+            "status": "in_progress",
+            "deadline": "2023-12-20"
+        },
+        {
+            "task_id": 2,
+            "title": "Fix bugs in module Y",
+            "description": "Debug and resolve issues",
+            "assignee": "Alice",
+            "status": "pending",
+            "deadline": "2023-12-15"
+        }, 
+        {
+            "task_id": 3,
+            "title": "Samiy Glavniy TASK",
+            "description": "Chto-to sdelat' nado, pon?",
+            "assignee": "Jorge Prikolist",
+            "status": "in_progress",
+            "deadline": "2023-12-21"
+        }
+    ]
+}

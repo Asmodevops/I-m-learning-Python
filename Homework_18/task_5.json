@@ -1,0 +1,39 @@
+{
+"transactions": [
+    {
+        "transaction_id": 1,
+        "description": "Salary",
+        "amount": 3000,
+        "date": "2023-12-01",
+        "category": "Income"
+    },
+    {
+        "transaction_id": 2,
+        "description": "Alice",
+        "amount": 2500,
+        "date": "2023-12-02",
+        "category": "Expenses"
+    },
+    {
+        "transaction_id": 3,
+        "description": "Anna",
+        "amount": 1500,
+        "date": "2022-12-03",
+        "category": "Expenses"
+    },
+    {
+        "transaction_id": 4,
+        "description": "Tomas",
+        "amount": 1300,
+        "date": "2023-12-04",
+        "category": "Expenses"
+    },
+    {
+        "transaction_id": 5,
+        "description": "Groceries",
+        "amount": 150,
+        "date": "2023-12-06",
+        "category": "Expenses"
+    }
+]
+}
