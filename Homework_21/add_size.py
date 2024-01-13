@@ -1,4 +1,3 @@
-
 def choice_size():
     size = input()
     while True:

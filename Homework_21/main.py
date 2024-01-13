@@ -1,8 +1,7 @@
-import json
 from get_snowflake_shapes import get_shape
 from add_size import choice_size
 from add_shape import choice_shape
-from save_snowflake import save_snowflake
+
 
 # Задача 1
 # Реализовать класс
@@ -16,6 +15,14 @@ class Snowflake:
     def __init__(self, size: float, shape: str):
         self.size = size
         self.shape = shape
+    
+
+    def change_size(self, new_size):
+        self.size = new_size
+    
+    
+    def change_shape(self, new_shape):
+        self.shape = new_shape
 
 
     def add_snowflake(self):
@@ -25,8 +32,17 @@ class Snowflake:
         }
 
         return snowflake
-    
+
+
 shapes = get_shape()
+print('Задайте размер снежинки: ', end='')
+size = choice_size()
+
+print('\nТеперь выберите форму снежинки из списка: ')
+shape = choice_shape(shapes)
+snowflake = Snowflake(size, shapes[shape])
+print('\nСнежинка создана!')
+
 
 while True:
     choice = input(
@@ -49,52 +65,28 @@ while True:
             size = choice_size()
             
             print('\nТеперь выберите форму снежинки из списка: ')
-            # shapes = get_shape()
             shape = choice_shape(shapes)
-            save_snowflake(Snowflake, size, shapes, shape)
-            print('Снежинка создана!')
+            snowflake = Snowflake(size, shapes[shape])
+            print('\nСнежинка создана!')
+
 
         case '2':
-            try:
-                with open('snowflake.json', encoding='utf-8') as file:
-                    snowflake = json.load(file)
-                    for key, value in snowflake.items():
-                        print(f'{key}: {value}')
+            print('\nВаша снежинка:')
+            for key, value in snowflake.add_snowflake().items():
+                print(f'    {key}: {value}')
 
-
-            except (FileNotFoundError, json.JSONDecodeError):
-                print('Снежинка еще не создана.')
 
         case '3':
-            try:
-                with open('snowflake.json', encoding='utf-8') as f:
-                    snowflake = json.load(f)
-                
-                for key, value in shapes.items():
-                    if snowflake['Форма'] == value:
-                        shape = key
-                print('Задайте новый размер для вашей снежинки: ', end='')
-                size = choice_size()
-                
-                save_snowflake(Snowflake, size, shapes, shape)
-                print('Размер снежинки успешно изменен.')
-
-            except (FileNotFoundError, json.JSONDecodeError):
-                print('Снежинка еще не создана.')
+            print('Задайте новый размер для вашей снежинки: ', end='')
+            size = choice_size() 
+            snowflake.change_size(new_size=size)
+            print('\nРазмер снежинки успешно изменен.')
 
         case '4':
-            try:
-                with open('snowflake.json', encoding='utf-8') as f:
-                    snowflake = json.load(f)
-                size = snowflake['Размер']
-                
-                print('Выберите для вашей снежинки новую форму: ')
-                shape = choice_shape(shapes)
-                save_snowflake(Snowflake, size, shapes, shape)
-                print('Форма снежинки успешно изменена.')
-
-            except (FileNotFoundError, json.JSONDecodeError):
-                print('Снежинка еще не создана.')
+            print('Выберите для вашей снежинки новую форму: ')
+            shape = choice_shape(shapes)
+            snowflake.change_shape(new_shape=shapes[shape])
+            print('\nФорма снежинки успешно изменена.')
 
         case _:
             pass

@@ -1,4 +1,3 @@
-
 def choice_shape(shapes):
     for key, value in shapes.items():
         print(f'{key} - {value}')
