@@ -61,3 +61,5 @@ INSERT INTO games (name, save_date, save_time) VALUES
     ('Red Dead Redemption 2', '29.02.2024', '22:30'); 
 
 SELECT * FROM games;
+
+
