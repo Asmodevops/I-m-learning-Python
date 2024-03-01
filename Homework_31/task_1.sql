@@ -4,7 +4,7 @@
 *показать группы(имя, рейтинг и курс)  рейтинг, которых меньше либо равен 50 
 */
 
-/* 
+
 CREATE TABLE IF NOT EXISTS mygroup(
 	name TEXT PRIMARY KEY,
 	rating INTEGER,
@@ -15,10 +15,9 @@ INSERT INTO mygroup (name, rating, class) VALUES
     ('group1', 40, 1),
     ('group2', 55, 2),
     ('group3', 30, 3); 
-*/
 	
 	
--- SELECT * FROM mygroup WHERE rating <= 50;
+SELECT * FROM mygroup WHERE rating <= 50;
 
 
 /* 
@@ -26,7 +25,7 @@ INSERT INTO mygroup (name, rating, class) VALUES
 добавить 3 любых оружия
 показать оружия(имя, тип и мощность) мощность, которых равна 200
 */
-/*
+
 CREATE TABLE IF NOT EXISTS weapons(
 	name TEXT PRIMARY KEY,
 	type TEXT, 
@@ -36,10 +35,10 @@ CREATE TABLE IF NOT EXISTS weapons(
 INSERT INTO weapons (name, type, power) VALUES
     ('Widow''s Cry', 'Sword', 200),
     ('True to the Oath', 'Sword', 190),
-    ('Heartbreaker', 'Sword', 210); */
+    ('Heartbreaker', 'Sword', 210); 
 
 
--- SELECT * FROM weapons WHERE power == 200;
+SELECT * FROM weapons WHERE power == 200;
 
 
 /* 
@@ -47,7 +46,8 @@ INSERT INTO weapons (name, type, power) VALUES
 добавить 3 любые игры 
 показать все записи игр
 */
-/* 
+
+
 CREATE TABLE IF NOT EXISTS games(
 	name TEXT PRIMARY KEY,
 	save_date TEXT,
@@ -58,6 +58,6 @@ CREATE TABLE IF NOT EXISTS games(
 INSERT INTO games (name, save_date, save_time) VALUES
     ('The Witcher', '01.03.2024', '14:34'),
     ('Grand Theft Auto VI', '01.03.2024', '15:55'),
-    ('Red Dead Redemption 2', '29.02.2024', '22:30'); */
+    ('Red Dead Redemption 2', '29.02.2024', '22:30'); 
 
 SELECT * FROM games;
