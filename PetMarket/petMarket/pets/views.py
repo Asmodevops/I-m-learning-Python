@@ -14,7 +14,7 @@ def index(request):
 #
 
 def pet(request, pet_slug):
-    if pet_slug in  ['cats', 'dogs']:
+    if pet_slug in ['cats', 'dogs']:
         return HttpResponse(f'<h2>{pet_slug}</h2>')
     return HttpResponse(f'<h2>ОШИБКА!!! Нет такой страницы...</h2>')
 
