@@ -1,19 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Страница про животных</h1>
-<h2>{{ pet }}</h2>
+{% extends 'base.html' %}
+
+{% block main_content %}
+
+<h1>{{ pet }}</h1>
+
+<h2>pet {{ pet }}</h2>
 <p>pet_text {{ pet_text }}</p>
-<p>pet_list {{ pet_list}}</p>
-<p>pet_list.0 {{ pet_list.0}}</p>
-<p>pet_list first {{ pet_list|first }}</p>
 <p>pet_int {{ pet_int }}</p>
-<p>pet_dict {{ pet_dict }}</p>
-<p>pet_dict.dog {{ pet_dict.dog }}</p>
 <p>pet_object {{ pet_object }}</p>
-</body>
-</html>
+
+
+
+<div>
+<h2><p>Фильтры</p></h2>
+----------------------Словарь----------------------
+</div>
+
+<div>
+    <p>pet_dict {{ pet_dict }}</p>
+    <p>pet_dict.dog {{ pet_dict.dog }}</p>
+</div>
+
+<div>
+----------------------Список----------------------
+</div>
+
+<div>
+    <p>pet_list {{ pet_list }}</p>
+    <p>pet_list.0 {{ pet_list.0 }}</p>
+    <p>pet_list first {{ pet_list|first }}</p>
+</div>
+
+
+<h2>
+    Шаблонные теги
+</h2>
+<h3>Список животных</h3>
+<ul>
+    {% for name_pet in pet_list %}
+
+        <li>{{ name_pet }}</li>
+
+    {% endfor %}
+</ul>
+
+<h3>Словарь животных</h3>
+<ul>
+    {% for key, value in pet_dict.items %}
+
+        <li>{{ key }} = {{ value }}</li>
+
+    {% endfor %}
+</ul>
+
+
+
+{% endblock main_content %}

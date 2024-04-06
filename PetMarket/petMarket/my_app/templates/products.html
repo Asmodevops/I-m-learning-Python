@@ -1,10 +1,29 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
-<h2>Продукт № {{product_id}}</h2><h3><p> ОПИСАНИЕ ПРОДУКТА № {{product_id}} </p></h3>
+<h1>Список доступных товаров</h1>
+{% for product in product_objects %}
+    {% if product.quantity > 0 %}
+    <div class="prod">
+        <div class="product_image">
+            <img src="{% static 'images/' %}{{ product.image }}" alt="{{ product.name }}">
+        </div>
+        <div class="product_descr">
+            <h2>{{ product.name }}</h2>
+            <p class="desc">{{ product.description }}</p>
+            <p class="price">Цена: ${{ product.price }}</p>
+        </div>
+    </div>
+    {% endif %}
+{% endfor %}
+
+
 </body>
 </html>

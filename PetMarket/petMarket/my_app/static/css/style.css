@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+img{
+    width: 160px;
+}
+
+product_image{
+    width: 150px;
+}
+
+.prod{
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    width: 1000px;
+}
+
+.product_descr{
+    margin-left: 20px;
+}
+
+h2{
+    font-size: 30pt;
+    margin-bottom: 15px;
+}
+
+.desc{
+    font-size: 14pt;
+}
+
+.price{
+    font-size: 24pt;
+    text-align: end;
+}

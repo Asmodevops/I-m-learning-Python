@@ -22,7 +22,7 @@ def pet(request, pet_slug):
     data = {
         'pet': pet_slug,
         'pet_text': 'Это просто тест с животными.',
-        'pet_list': ["Кот", "Собака"],
+        'pet_list': ["Кот", "Собака", "Воробей", "Лошадь"],
         'pet_int': 34,
         'pet_dict': {'cat': 'Кот', 'dog': 'Собака'},
         'pet_object': Cat()
@@ -30,6 +30,6 @@ def pet(request, pet_slug):
     if pet_slug in ['cats', 'dogs']:
         return render(request, 'slug.html', context=data)
     # return HttpResponse('<h2>ОШИБКА!!! Нет такой страницы...</h2>')
-    return render(request, 'page404.html', status=404)
+    return render(request, 'pageNotFound.html', status=404)
 def categories(request, categ_id):
     return HttpResponse(f'<h2>Категории<p> id: { categ_id } </p></h2>')
