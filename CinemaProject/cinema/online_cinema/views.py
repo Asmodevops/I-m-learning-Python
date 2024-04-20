@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from .models import Feedback
 
 
 # all_films = {
@@ -13,4 +14,9 @@ def index(request):
 
 def films(request, film_slug):
     if film_slug in ['arthur-king', 'master-and-margarite']:
-        return render(request, f'{film_slug}.html')
+        feedbacks = Feedback.objects.filter(film_name=film_slug)
+        data = {
+            'feedback': feedbacks
+        }
+
+        return render(request, f'{film_slug}.html', data)
