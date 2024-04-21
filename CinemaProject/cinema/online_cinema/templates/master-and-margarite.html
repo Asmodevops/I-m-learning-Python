@@ -1,67 +1,16 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Master and Margarite</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-        }
-        .main{
-            display: flex;
-            flex-direction: row;
-            padding: 30px;
-        }
-        .overview{
-            width: 650px;
-            margin-left: 30px;
-        }
-        h1{
-            margin-bottom: 20px;
-        }
-
-        p{
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        h2{
-            margin-bottom: 20px;
-        }
-        td{
-            padding: 0px;
-            padding-bottom: 10px;
-            padding-right: 40px;
-        }
-        .poster>img{
-            height: 500px;
-        }
-
-        .feedback{
-            margin-top: 30px;
-        }
-
-        .fb {
-            padding: 10px;
-            margin-bottom: 5px;
-            margin-left: 15px;
-        }
-
-        .fb-text{
-            font-size: 14pt;
-        }
-
-        .fb-date{
-            text-align: right;
-        }
-
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body>
     <div class="main">
         <div class="poster">
-            <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/56d4e2fb-f71c-419e-845e-d667e57f92ad/1920x" alt="">
+            <img src="{% static 'images/master-and-margarite.webp' %}" alt="">
         </div>
 
         <div class="overview">
@@ -143,16 +92,29 @@
 
             </table>
             <h2 class="feedback">Отзывы</h2>
+            <form method="POST" action="">
+                 {% csrf_token %}
+                <textarea name="feedback" id="fb-input" class="fb-input"></textarea>
+                <br>
+                <input type="submit" value="Отправить" id="fb_submit" class="fb_submit">
+            </form>
 
             {% for fb in feedback %}
             <div class="fb">
                 <p class="fb-text">{{ fb.text }}</p>
-                <p class="fb-date">{{ fb.created_date }}</p>
+                <p class="fb-date">{{ fb.created_date }}
+                    {% if fb.update is True %}
+                        <span class="fb-update">(Отредактировано {{fb.updated_date}})</span>
+                    {% endif %}
+                </p>
+                <a href="../{{ fb.film_name }}/fb_edit/{{ fb.id }}"><button class="btn_edit">Редактировать</button></a>
+                <a href="../{{ fb.film_name }}/fb_delete/{{ fb.id }}"><button class="btn_del">Удалить</button></a>
             </div>
             {% endfor %}
 
 
         </div>
     </div>
+<script src="{% static 'js/film_script.js' %}"></script>
 </body>
 </html>

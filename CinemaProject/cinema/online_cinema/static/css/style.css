@@ -1,0 +1,77 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+}
+.overview{
+    width: 650px;
+    margin-left: 30px;
+}
+h1{
+    margin-bottom: 20px;
+}
+
+p{
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+h2{
+    margin-bottom: 20px;
+}
+td{
+    padding: 0px;
+    padding-bottom: 10px;
+    padding-right: 40px;
+}
+.poster>img{
+    height: 500px;
+}
+
+.feedback{
+    margin-top: 30px;
+}
+
+.fb {
+    margin-top: 25px;
+    border: 1px solid #3ba3a0;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: rgba(129,228,251, 18%)
+}
+
+.fb-text{
+    font-size: 14pt;
+}
+
+.fb-date{
+    text-align: right;
+}
+.fb-input{
+    width: 620px;
+    height: 100px;
+    resize: none;
+    font-size: 11pt;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #3ba3a0;
+    background-color: rgba(159,252,249, 30%);
+}
+
+.fb_submit, .btn_edit, .btn_del{
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #d6fcfb;
+    border: 1px solid #3ba3a0;
+    border-radius: 7px;
+}
+
+.fb-update{
+    font-size: 9pt;
+    color: gray;
+}

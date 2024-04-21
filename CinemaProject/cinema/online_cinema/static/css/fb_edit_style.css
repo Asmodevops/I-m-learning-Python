@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.page{
+    display: flex;
+    justify-content: center;
+}
+
+.central_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 800px;
+}
+
+.fb-input{
+    width: 500px;
+    height: 80px;
+    padding: 15px;
+    resize: none;
+    font-size: 11pt;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #3ba3a0;
+    background-color: rgba(159,252,249, 30%);
+}
+
+h2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fb{
+    width: 500px;
+    border: 1px solid #3ba3a0;
+    border-radius: 10px;
+    padding: 12px;
+    background-color: rgba(129,228,251, 18%)
+}
+
+.add-date{
+    text-align: right;
+}
+
+.update-btn{
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #d6fcfb;
+    border: 1px solid #3ba3a0;
+    border-radius: 7px;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}

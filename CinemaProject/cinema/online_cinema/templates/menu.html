@@ -1,67 +1,18 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Online Cinema</title>
-    <style>
-        h1{
-            padding: 25px;
-            font-size: 48px;
-        }
-
-        h2{
-            font-size: 32px;
-        }
-
-        .main{
-            display: flex;
-            flex-direction: column;
-        }
-
-        .film{
-            display: flex;
-            flex-direction: row;
-            height: 300px;
-            margin-bottom: 20px;
-        }
-
-        img{
-            height: 300px;
-        }
-
-        .left-block{
-            margin-left: 25px;
-            margin-right: 25px;
-        }
-
-        .right-block{
-            width: 800px;
-            display: flex;
-            flex-direction: column;
-            text-align: justify;
-            justify-content: start;
-        }
-
-        .right-block>p{
-            font-size: 14pt;
-        }
-
-        .btn_1{
-            height: 35px;
-            width: 100%;
-        }
-        .btn_1:hover{
-            cursor: pointer;
-        }
-
-    </style>
+    <link rel="stylesheet" href="{% static 'css/menu_style.css' %}" />
 </head>
 <body>
 <h1>Список фильмов</h1>
 <div class="main">
     <div class="film">
         <div class="left-block">
-            <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10812607/1820978b-16c9-4767-b96c-16f91bf0844a/1920x" alt="">
+            <img src="{% static 'images/arthur-king.webp' %}" alt="">
         </div>
 
         <div class="right-block">
@@ -84,7 +35,7 @@
 
     <div class="film">
         <div class="left-block">
-            <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/56d4e2fb-f71c-419e-845e-d667e57f92ad/1920x" alt="">
+            <img src="{% static 'images/master-and-margarite.webp' %}" alt="">
         </div>
 
         <div class="right-block">

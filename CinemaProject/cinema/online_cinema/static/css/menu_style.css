@@ -1,0 +1,49 @@
+h1{
+    padding: 25px;
+    font-size: 48px;
+}
+
+h2{
+    font-size: 32px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.film{
+    display: flex;
+    flex-direction: row;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+img{
+    height: 300px;
+}
+
+.left-block{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.right-block{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    justify-content: start;
+}
+
+.right-block>p{
+    font-size: 14pt;
+}
+
+.btn_1{
+    height: 35px;
+    width: 100%;
+}
+.btn_1:hover{
+    cursor: pointer;
+}

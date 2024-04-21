@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Feedback</title>
+    <link rel="stylesheet" href="{% static 'css/fb_edit_style.css' %}" />
+</head>
+<body>
+<div class="page">
+    <div class="central_content">
+        <h2>Текущий отзыв: </h2>
+        <div class="fb">
+            <p>{{ fb.text }}</p>
+            <p class="add-date">{{ fb.created_date }}</p>
+        </div>
+
+        <h2>Отредактировать: </h2>
+        <div>
+            <form method="POST" action="/films/{{ fb.film_name }}/fb_edit/{{ fb.id }}/">
+                {% csrf_token %}
+                <textarea name="feedback" class="fb-input"></textarea>
+                <br>
+                <div class="btn">
+                    <input type="submit" value="Изменить" class="update-btn">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
