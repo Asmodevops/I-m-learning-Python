@@ -1,20 +1,21 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block main_content %}
+<h1>{{ pet_name }}</h1>
 
-<h1>{{ pet }}</h1>
-
-<h2>pet {{ pet }}</h2>
+<h3>pet_name {{ pet_name }}</h3>
 <p>pet_text {{ pet_text }}</p>
+
 <p>pet_int {{ pet_int }}</p>
-<p>pet_object {{ pet_object }}</p>
+
+<p>pet_obj {{ pet_obj }}</p>
 
 
+<h2>
+    Фильтры
+</h2>
+<p>------словарь-----</p>
 
-<div>
-<h2><p>Фильтры</p></h2>
-----------------------Словарь----------------------
-</div>
 
 <div>
     <p>pet_dict {{ pet_dict }}</p>
@@ -22,21 +23,23 @@
 </div>
 
 <div>
-----------------------Список----------------------
-</div>
+    ------список-----
 
-<div>
     <p>pet_list {{ pet_list }}</p>
     <p>pet_list.0 {{ pet_list.0 }}</p>
-    <p>pet_list first {{ pet_list|first }}</p>
+    <p>pet_list|first {{ pet_list|first }}</p> <!--pet_list|first   фильтр-->
+
+
 </div>
+
 
 
 <h2>
-    Шаблонные теги
+    шаблоные теги
 </h2>
-<h3>Список животных</h3>
-<ul>
+
+<h3>список животных</h3>
+<ul class="pets">
     {% for name_pet in pet_list %}
 
         <li>{{ name_pet }}</li>
@@ -44,14 +47,17 @@
     {% endfor %}
 </ul>
 
-<h3>Словарь животных</h3>
-<ul>
+
+
+<h3>словарь животных</h3>
+<ul class="dict_pets">
     {% for key, value in pet_dict.items %}
 
-        <li>{{ key }} = {{ value }}</li>
+        <li>key - > {{ key }} <p>value  -> {{ value }}</p></li>
 
     {% endfor %}
 </ul>
+{# greeting #}hello
 
 
 

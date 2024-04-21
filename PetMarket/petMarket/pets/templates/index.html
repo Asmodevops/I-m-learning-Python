@@ -1,7 +1,18 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block main_content %}
 <h1>Главная страница</h1>
 
 <!--Содержимое страницы-->
+<form method="get" action="petGET/">
+  <label for="search">Search :</label>
+  <input type="search" id="search" name="search_field"> <!--name - параметр запроса-->
+  <input type="submit" value="Submit">
+</form>
+
+<input type="text" id="smthfield" name="smthfield" value="something">
+<a href="petGET/?smthfield=something"> <input type="submit" value="Submit"></a> <!--js од для получения значения value-->
+
 {% endblock main_content %}
+
+

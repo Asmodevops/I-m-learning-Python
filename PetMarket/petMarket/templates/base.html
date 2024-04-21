@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+<input type="submit" id="btn_theme" name="theme" value="dark">
+<h2><a href=''>Главная</a> <a href='/pets/cats/'>Коты</a> <a href='/pets/dogs/'>Собаки</a></h2>
+
+{% block main_content %}
+<!--Содержимое страницы-->
+
+{% endblock main_content %}
+
+
+
+<h1>БАЗОВЫЙ ШАБЛОН КОНЕЦ</h1>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
