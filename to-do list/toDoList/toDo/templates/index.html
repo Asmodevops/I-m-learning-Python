@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My To-Do List</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+<section>
+    <div class="left-side">
+        <div class="activ-menu">
+            <div class="four">
+                <h1>My ToDo List</h1>
+            </div>
+            <div class="task-list">
+                <h1 class="task-add-header">Добавить задачу</h1>
+                <form method="POST" action="" class="task-add">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td style="padding: 5px;"><h2 class="name">Название</h2></td>
+                            <td style="padding: 5px;"><h2 class="text">Описание</h2></td>
+                        </tr>
+                        <tr>
+                            <td><textarea name="task-name" class="task-name"></textarea></td>
+                            <td><textarea name="task-text" class="task-text"></textarea></td>
+                            <td style="display: flex; height: 46px;"><input type="submit" value="Добавить" class="task-submit"></td>
+                        </tr>
+                    </table>
+                </form>
+                {% if tasks %}
+                <h1 class="all-tasks-header">Текущие задачи: </h1>
+                {% for task in tasks %}
+                 <div class="active_task_zone">
+                    <h2 class="task_header">{{ task.name }}
+                    <span class="status-task-header">{% if task.status is False %}
+                        (В процессе) {% else %} (Завершено){% endif %}</span></h2>
+                    <div class="task">
+                        <div class="task_zone">
+                            <p><b>Описание:</b> {{ task.text }}</p>
+                            {% if task.status is False %}
+                                <p><b>Статус:</b> В процессе⌛</p>
+                            {% else %}
+                                <p><b>Статус:</b> Завершено✅</p>
+                            {% endif %}
+                            <p><b>Добавлено:</b> {{ task.date }}</p>
+                            <div class="buttons">
+                                {% if task.status is False %}
+                                    <a href="/task_edit/{{ task.id }}"><button class="btn_edit">Редактировать</button></a>
+                                    <a href="/task_done/{{ task.id }}"><button class="btn_done">Выполнено!</button></a>
+                                    <a href="/task_delete/{{ task.id }}"><button class="btn_del">Удалить</button></a>
+                                {% else %}
+                                    <a href="/task_delete/{{ task.id }}"><button class="btn_del">Удалить</button></a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                {% endfor %}
+
+                {% else %}
+                    <h1 class="all-tasks-header">Задачи еще не добавлены. </h1>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

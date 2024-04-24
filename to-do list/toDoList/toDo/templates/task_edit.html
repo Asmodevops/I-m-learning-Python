@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Update</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+<section>
+    <div class="left-side">
+        <div class="activ-menu">
+            <div class="four">
+                <h1>My ToDo List</h1>
+            </div>
+            <div class="task-list">
+                <h1 class="all-tasks-header">Задача, выбранная для редактирования: </h1>
+                 <div class="active_task_zone">
+                    <h2 class="task_header">{{ task.name }}
+                    <span class="status-task-header">{% if task.status is False %}
+                        (В процессе) {% else %} (Завершено){% endif %}</span></h2>
+                    <div class="task">
+                        <div class="task_zone">
+                            <p><b>Описание:</b> {{ task.text }}</p>
+                            {% if task.status is False %}
+                                <p><b>Статус:</b> В процессе⌛</p>
+                            {% else %}
+                                <p><b>Статус:</b> Завершено✅</p>
+                            {% endif %}
+                            <p><b>Добавлено:</b> {{ task.date }}</p>
+                        </div>
+                    </div>
+                 </div>
+
+                <h1 class="task-add-header">Редактировать задачу</h1>
+                <form method="POST" action="" class="task-add">
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td style="padding: 5px;"><h2 class="name">Название</h2></td>
+                            <td style="padding: 5px;"><h2 class="text">Описание</h2></td>
+                        </tr>
+                        <tr>
+                            <td><textarea name="task-name" class="task-name"></textarea></td>
+                            <td><textarea name="task-text" class="task-text"></textarea></td>
+                            <td style="display: flex; height: 46px;"><input type="submit" value="Изменить" class="task-submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
