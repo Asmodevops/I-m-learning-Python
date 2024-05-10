@@ -63,6 +63,12 @@ function clearOutputCookies() {
 
 
 
+
+
+
+
+
+
 // -----------------------------------AJAX -------------------------------------------------------//
 const requestUrl = 'https://jsonplaceholder.typicode.com/users';
 let isLoading = false;
@@ -114,21 +120,3 @@ $(document).ready(function() {
     // Инициируем первый запрос
     sendRequest();
 });
-
-const fb_btn = document.getElementById("fb");
-
-function alertFb(event) {
-    alert('Отзыв не должен быть пустым!')
-}
-
-.addEventListener('click', handleClickFunction)
-
-
-
-fb_btn.onclick = function() {
-    let fb = document.getElementById("fb").value;
-    console.log(fb);
-    if (fb == null){
-        console.log("Please enter");
-        alert('Отзыв не должен быть пустым!'); };
-};

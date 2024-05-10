@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/fbstyle.css' %}" />
+</head>
+<body>
+<h2>Ваш отзыв</h2>
+
+<h3>user_form</h3>
+{{ user_form }}
+
+<h3>add_feedback_form</h3>
+
+<form method="POST" novalidate>
+    {% csrf_token %}
+
+    {% for field in add_feedback_form %}
+
+        {{ field.label_tag }}
+
+        <div>{{ field }}</div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    {% endfor %}
+
+    <input id="id_text" type="submit" value="Отправить" class="fb_btn">
+
+
+
+
+
+
+</form>
+
+
+
+
+
+{% comment %}
+    {{ add_feedback_form.as_p }}
+{% endcomment %}
+
+{% if feedback %}
+    <h2>Отзывы</h2>
+
+    {% for item in feedback %}
+    <div style="background: lightblue;" id="{{ item.id }}">
+        <p>{{ item.text }}</p>
+        <p>{{ item.date_created }}
+            <span style="color: gray; font-size: 10pt;">
+                {% if item.update is True %} (Отредактировано {{ item.update_date }}) {% endif %}
+            </span>
+        </p>
+        <a href="./edit_feedback/{{ item.id }}"><button>редактировать</button></a>
+        <a href="./delete_feedback/{{ item.id }}"><button>удалить</button></a>
+    </div>
+    {% endfor %}
+{% endif %}
+
+
+    <script src="{% static 'js/fbscript.js' %}"></script>
+</body>
+</html>

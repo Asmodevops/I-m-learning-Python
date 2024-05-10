@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Ваш текущий отзыв</h2>
+
+<div style="background: lightblue;">
+    <p>{{ feedback.text }}</p>
+    <p>{{ feedback.date_created }}</p>
+</div>
+
+<h2>Отредактировать: </h2>
+<form method="POST" novalidate>
+    {% csrf_token %}
+    {% for field in add_feedback_form %}
+
+        {{ field.label_tag }}
+
+        <div>{{ field }}</div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    {% endfor %}
+
+    <input id="id_text" type="submit" value="Отправить" class="fb_btn">
+
+
+
+</form>
+    <script src="{% static 'js/fbscript.js' %}"></script>
+</body>
+</html>
