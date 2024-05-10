@@ -16,7 +16,7 @@
             </div>
             <div class="task-list">
                 <h1 class="task-add-header">Добавить задачу</h1>
-                <form method="POST" action="" class="task-add">
+                <form method="POST" novalidate class="task-add">
                     {% csrf_token %}
                     <table>
                         <tr>
@@ -24,8 +24,8 @@
                             <td style="padding: 5px;"><h2 class="text">Описание</h2></td>
                         </tr>
                         <tr>
-                            <td><textarea name="task-name" class="task-name"></textarea></td>
-                            <td><textarea name="task-text" class="task-text"></textarea></td>
+                            <td>{{ task_add_form.name }}</td>
+                            <td>{{ task_add_form.text }}</td>
                             <td style="display: flex; height: 46px;"><input type="submit" value="Добавить" class="task-submit"></td>
                         </tr>
                     </table>

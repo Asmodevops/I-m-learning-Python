@@ -11,3 +11,12 @@ for (let i = 0; i < task_header.length; i++){
         }
     });
 }
+
+
+let task_add_btn = document.querySelector(".task-submit")
+task_add_btn.onclick = function() {
+    let task_name = document.querySelector(".task-name").value;
+    let task_text = document.querySelector(".task-text").value;
+    if (task_name == '' || task_text == ''){
+        alert('Все поля должны быть заполнены!'); };
+};
