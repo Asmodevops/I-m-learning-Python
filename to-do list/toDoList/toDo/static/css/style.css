@@ -154,3 +154,10 @@ body{
 .buttons button:hover{
     background-color: #c6c6c6;
 }
+
+.alert-danger{
+    color: #d11b0f;
+    font-size: 14pt;
+    font-weight: bold;
+    padding: 10px;
+}

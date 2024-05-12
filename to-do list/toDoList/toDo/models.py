@@ -1,5 +1,5 @@
 from django.db import models
-import datetime
+
 
 class Task(models.Model):
     name = models.CharField(max_length=50)

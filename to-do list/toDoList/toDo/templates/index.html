@@ -29,6 +29,15 @@
                             <td style="display: flex; height: 46px;"><input type="submit" value="Добавить" class="task-submit"></td>
                         </tr>
                     </table>
+                    {% if task_add_form.errors %}
+                        {% for field in task_add_form %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    - {{error}}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
                 </form>
                 {% if tasks %}
                 <h1 class="all-tasks-header">Текущие задачи: </h1>

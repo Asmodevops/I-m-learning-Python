@@ -1,63 +1,73 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Task
 from .forms import AddTaskForm
 
 def index(request):
-    if request.method == 'GET':
-        tasks = Task.objects.all()
-        data = {
-            'tasks': tasks,
-            'task_add_form': AddTaskForm()
-        }
-        return render(request, 'index.html', data)
-
     if request.method == 'POST':
-        task_name = request.POST.get('name')
-        task_text = request.POST.get('text')
-        if len(task_text) == 0 or len(task_name) == 0:
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        Task.objects.create(name=task_name, text=task_text)
-        return HttpResponseRedirect('../../')
+        form = AddTaskForm(request.POST)
+        if form.is_valid():
+            try:
+                Task.objects.create(**form.cleaned_data)
+                return redirect('/')
+            except:
+                form.add_error(None, 'Ошибка добавления задачи')
+
+    if request.method == 'GET':
+        form = AddTaskForm()
+
+    tasks = Task.objects.all()
+    data = {
+        'tasks': tasks,
+        'task_add_form': form,
+    }
+
+    return render(request, 'index.html', data)
+
+
+
 
 def task_delete(request, task_id):
     try:
         task = Task.objects.get(id=task_id)
         task.delete()
-        return HttpResponseRedirect('../../')
+        return redirect('/')
     except Task.DoesNotExist:
         return render(request, 'pageNotFound404.html')
 
+
+
+
 def task_edit(request, task_id):
-    if request.method == 'GET':
-        try:
-            task = Task.objects.get(id=task_id)
-            data = {
-                'task': task,
-                'task_add_form': AddTaskForm()
-            }
-
-            return render(request, 'task_edit.html', data)
-        except Task.DoesNotExist:
-            return render(request, 'pageNotFound404.html')
-
+    try:
+        task = Task.objects.get(id=task_id)
+    except Task.DoesNotExist:
+        return render(request, 'pageNotFound404.html')
 
     if request.method == 'POST':
-        task_name = request.POST.get('name')
-        task_text = request.POST.get('text')
-        if len(task_text) == 0 or len(task_name) == 0:
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        task = Task.objects.get(id=task_id)
-        task.name = task_name
-        task.text = task_text
-        task.save()
-        return HttpResponseRedirect('../../')
+        form = AddTaskForm(request.POST)
+        if form.is_valid():
+            try:
+                task.name = request.POST.get('name')
+                task.text = request.POST.get('text')
+                task.save()
+                return redirect('/')
+            except:
+                form.add_error(None, 'Ошибка добавления задачи')
+
+    elif request.method == 'GET':
+        form = AddTaskForm()
+    data = {
+        'task': task,
+        'task_add_form': form
+    }
+    return render(request, 'task_edit.html', data)
+
 
 def task_done(request, task_id):
     try:
         task = Task.objects.get(id=task_id)
         task.status = True
         task.save()
-        return HttpResponseRedirect('../../')
+        return redirect('/')
     except Task.DoesNotExist:
         return render(request, 'pageNotFound404.html')
