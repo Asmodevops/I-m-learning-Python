@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/icon.png' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>XBOX Game Store</title>
+</head>
+<body>
+    <!-- НАВИГАЦИЯ НАЧАЛО -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <img src="{% static 'img/logo.png' %}" class="navbar-brand me-auto img-fluid" alt="" width="180">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header" data-bs-theme="dark">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" width="200">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 active" aria-current="page" href="/">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="catalog/">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="guarantee/">Гарантии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="feedback/">Отзывы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2" href="search/"><img src="{% static 'img/magnifier.png' %}" alt="" width="20">Поиск
+                                игр</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="login-button text-white">Войти</a>
+            <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- НАВИГАЦИЯ КОНЕЦ -->
+
+    <!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ НАЧАЛО -->
+
+    <section class="section-one">
+        <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
+            <h1>XBOX</h1>
+            <h2>GAME STORE</h2>
+        </div>
+    </section>
+    <!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
+
+    <!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
+    <section class="section-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-8 col-xl-12">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for item in carousel %}
+                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                <div class="row g-0">
+                                    <div class="col-8 position-relative">
+                                        <a href="game/{{ item.game1.id }}"><img src="{{ item.big_image.url }}"
+                                                class="d-block h-100 object-fit-cover w-auto img-fluid" alt="..."></a>
+                                        <div class="carousel-caption d-none d-lg-block text-center position-absolute bottom-0 start-50 translate-middle-x text-white">
+                                            <h5>{{ item.caption }}</h5>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 d-flex flex-column">
+                                        <div class="flex-fill">
+                                            <a href="game/{{ item.game2.id }}"><img src="{{ item.small_image2.url }}"
+                                                    class="d-block h-100 object-fit-cover w-auto img-fluid"
+                                                    alt="..."></a>
+                                        </div>
+                                        <div class="flex-fill">
+                                            <a href="game/{{ item.game3.id }}"><img src="{{ item.small_image3.url }}"
+                                                    class="d-block h-100 object-fit-cover w-auto img-fluid"
+                                                    alt="..."></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Предыдущий</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Следующий</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="xbox-card col-xxl-4 col-xl-12 d-flex">
+                    <div class="row col-xxl-12 col-xl-6">
+                        <!-- Первый ряд картинок -->
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.0.id }}" title="{{ games.0.title }}">
+                                <img src="{{ games.0.banner_image.url }}" class="img-fluid" alt="{{ games.0.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.1.id }}" title="{{ games.1.title }}">
+                                <img src="{{ games.1.banner_image.url }}" class="img-fluid" alt="{{ games.1.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.2.id }}" title="{{ games.2.title }}">
+                                <img src="{{ games.2.banner_image.url }}" class="img-fluid" alt="{{ games.2.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.3.id }}" title="{{ games.3.title }}">
+                                <img src="{{ games.3.banner_image.url }}" class="img-fluid" alt="{{ games.3.title }}">
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row col-xxl-12 col-xl-6">
+                        <!-- Второй ряд картинок -->
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.4.id }}" title="{{ games.4.title }}">
+                                <img src="{{ games.4.banner_image.url }}" class="img-fluid" alt="{{ games.4.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.5.id }}" title="{{ games.5.title }}">
+                                <img src="{{ games.5.banner_image.url }}" class="img-fluid" alt="{{ games.5.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.6.id }}" title="{{ games.6.title }}">
+                                <img src="{{ games.6.banner_image.url }}" class="img-fluid" alt="{{ games.6.title }}">
+                            </a>
+
+                        </div>
+                        <div class="col-md-3 col-6">
+
+                            <a href="game/{{ games.7.id }}" title="{{ games.7.title }}">
+                                <img src="{{ games.7.banner_image.url }}" class="img-fluid" alt="{{ games.7.title }}">
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
+
+    <!-- ТРЕТИЙ РАЗДЕЛ НАЧАЛО -->
+    <section class="section-three">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-6 col-xl-12 content-container d-flex flex-column">
+                    <h1 class="text-white text-left">
+                        XBOX GAME PASS
+                    </h1>
+                    <p class="text-white text-left">
+                        Xbox Game Pass Ultimate включает доступ к многопользовательскому режиму игры по сети на консоли
+                        и сотням высококачественных игр. Играйте в игры с друзьями на консоли и ПК и получите членство в
+                        EA Play — и все это по одной низкой ежемесячной цене.
+                    </p>
+                    <p class="text-white text-left">
+                        ✅XBOX GAME PASS ULTIMATE на 1+1⭐ месяц🔥950₽🔥
+                    </p>
+                    <p class="text-white text-left">
+                        ✅XBOX GAME PASS ULTIMATE на 5+1⭐ месяцев 🔥2690₽🔥
+                    </p>
+                    <p class="text-white text-left">
+                        ✅XBOX GAME PASS ULTIMATE на 9+1⭐ месяцев 🔥3790₽🔥
+                    </p>
+                    <p class="text-white text-left">
+                        ✅XBOX GAME PASS ULTIMATE на 13+1⭐ месяцев 🔥5090₽🔥
+                    </p>
+                    <p class="text-white text-left">
+                        ✅XBOX GAME PASS ULTIMATE на 25+1⭐ месяцев 🔥9590₽🔥
+                    </p>
+                    <p class="text-white text-left">
+                        ПРИОБРЕТИ ПОДПИСКУ XBOX GAME PASS И ПОЛУЧИ ДОСТУП К СОТНЕ ВЫСОКОКАЧЕСТВЕННЫХ ИГР
+                    </p>
+                    <div class="xbox-buy-div"><button type="button"
+                            class="buy-btn btn btn-success btn-lg">КУПИТЬ</button></div>
+                </div>
+                <div class="gamepass col-xxl-6 col-xl-12">
+                    <img src="{% static 'img/gamepass.jpg'%}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ТРЕТИЙ РАЗДЕЛ КОНЕЦ -->
+
+    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ НАЧАЛО -->
+    <section class="section-four">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-12 order-2 order-xl-1">
+                    <div class="news-img">
+                        <img src="{{ news.0.image.url }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="news-text col-xl-4 col-lg-12 order-1 order-xl-2">
+                    <h3 class="text-white">
+                        {{ news.0.title }}
+                    </h3>
+                    <p class="text-white">
+                        {{ news.0.content|safe }}
+                    </p>
+                </div>
+                <div class="col-xl-2 d-none d-xl-block d-flex align-self-end order-3">
+                    <div class="news-png-img">
+                        <img src="{% static 'img/pngwing.png' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ КОНЕЦ -->
+
+    <!-- ПЯТЫЙ РАЗДЕЛ НАЧАЛО -->
+    <section class="section-five">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 d-none d-xl-block d-flex align-self-end">
+                    <div class="news-png-img">
+                        <img src="{% static 'img/pngwing2.png' %}" alt="" class="img-fluid">
+                    </div>
+                </div>
+                <div class="news-text col-xl-4 col-lg-12">
+                    <h3 class="text-white">
+                        {{ news.1.title }}
+                    </h3>
+                    <p class="text-white">
+                        {{ news.1.content|safe }}
+                    </p>
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <div class="news-img">
+                        <img src="{{ news.1.image.url }}" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ КОНЕЦ -->
+
+    <!-- ФУТЕР НАЧАЛО -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 d-flex align-items-center">
+                    <img src="{% static 'img/icon/key.png' %}" alt="" class="footer-ico img-fluid">
+                    <p class="text-justify">Лицензионные ключи от официальных издателей</p>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center">
+                    <img src="{% static 'img/icon/gears.png' %}" alt="" class="footer-ico img-fluid">
+                    <p class="text-justify">Гарантированная техподдержка вашей покупки</p>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center ">
+                    <img src="{% static 'img/icon/tool.png' %}" alt="" class="footer-ico img-fluid">
+                    <p class="text-justify">Регулярные акции, скидки и бонусы</p>
+                </div>
+            </div>
+            <div class="row d-flex pt-3">
+                    <div class="col-xl-3 col-lg-6">
+                        <a href="#">Пользовательское соглашение</a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <a href="#">Политика конфиденциальности</a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <a href="#">Политика возврата</a>
+                    </div>
+                    <div class="col-xl-3 col-lg-6">
+                        <a href="#">Согласие на обработку персональных данных</a>
+                    </div>
+            </div>
+            <div class="row pt-3">
+                <div class="d-flex align-items-start">
+                    <img src="{% static 'img/icon/fcopyright.png' %}" alt="" class="footer-copyright-ico img-fluid">
+                    <h5>2024</h5>
+                </div>
+                <p class="ltl-txt">Все права защищены. Полное или частичное копирование материалов сайта без согласования с администрацией запрещено! <br>
+                    Все названия игр, компаний, торговых марок, логотипы и игровые материалы являются собственностью соответствующих владельцев.</p>
+
+            </div>
+        </div>
+    </footer>
+    <!-- ФУТЕР КОНЕЦ -->
+
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
