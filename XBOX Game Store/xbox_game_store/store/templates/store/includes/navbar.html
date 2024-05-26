@@ -1,0 +1,40 @@
+{% load static %}
+
+<!-- НАВИГАЦИЯ НАЧАЛО -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <img src="{% static 'img/logo.png' %}" class="navbar-brand me-auto img-fluid" alt="" width="180">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header" data-bs-theme="dark">
+                    <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="" width="200">
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if current_page == 'homepage' %}active{% endif %}" aria-current="page" href="{% url 'homepage' %}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if current_page == 'catalog' %}active{% endif %}" href="{% url 'catalog' %}">Каталог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if current_page == 'guarantee' %}active{% endif %}" href="{% url 'guarantee' %}">Гарантии</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if current_page == 'feedback' %}active{% endif %}" href="{% url 'feedback' %}">Отзывы</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2 {% if current_page == 'search' %}active{% endif %}" href="{% url 'search' %}"><img src="{% static 'img/magnifier.png' %}" alt="" width="20">Поиск игр</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#" class="login-button text-white">Войти</a>
+            <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Переключить навигацию">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+<!-- НАВИГАЦИЯ КОНЕЦ -->

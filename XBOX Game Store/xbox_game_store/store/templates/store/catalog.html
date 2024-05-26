@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-catalog.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ НАЧАЛО -->
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
+
+<!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container xbox-catalog">
+        <div class="row col-12 text-white">
+            <h1>Каталог игр</h1>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-2 col-12">
+                <h4 class="text-white">Фильтры</h4>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseOne">
+                                Цены
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="price" value="low">
+                                    До 1000₽</label><br>
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="price"
+                                        value="medium"> 1000₽ - 2000₽</label><br>
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="price" value="high">
+                                    2000₽ - 3000₽</label><br>
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="price"
+                                        value="higher"> 3000₽ - 4000₽</label><br>
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="price"
+                                        value="highest"> 4000₽ +</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo">
+                                Жанр
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                {% for genre in genres %}
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="genre"
+                                        value="{{ genre.id }}"> {{ genre.name }} </label><br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseThree">
+                                Технические возможности
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                {% for feature in features %}
+                                <label><input type="checkbox" class="filter-checkbox" data-filter="feature"
+                                        value="{{ feature.id }}"> {{ feature.name }} </label><br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1 d-none d-lg-block"></div>
+            <div class="col-lg-8 col-12 d-flex justify-content-center align-items-start flex-column"
+                id="game-container">
+                {% for game in page_obj %}
+                <div class="d-flex mb-5 game-card p-3">
+                    <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex">
+                        <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
+                        <div class="d-flex flex-column">
+                            <h3 class="text-white">{{ game.title }}</h3>
+                            <br>
+                            <br>
+                            <p class="text-white text-justify">{{ game.description|truncatewords:50 }}</p>
+                            <br>
+                            <h5 class="text-white">Цена: {{ game.price }}₽</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <div class="row mt-3 justify-content-center w-100" id="load-more-container">
+                    <button id="load-more-btn" class="btn btn-primary"
+                        data-next-page="{{ page_obj.next_page_number }}">Загрузить еще
+                    </button>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-1 d-none d-lg-block"></div>
+        </div>
+    </div>
+</section>
+<!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
+
+
+{% include 'store/includes/footer.html' %}
+{% endblock %}

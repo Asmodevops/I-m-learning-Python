@@ -51,7 +51,11 @@ body {
     position: relative;
 }
 
-.nav-link:hover, .nav-link.active{
+.nav-link:hover{
+    color: #09A13E;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show{
     color: #09A13E;
 }
 
