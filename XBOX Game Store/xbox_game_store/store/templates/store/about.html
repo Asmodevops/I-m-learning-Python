@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-about.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
+
+<!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Гарантии</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
+<section class="section-three">
+    <div class="container">
+        <div class="row">
+            <h2 class="col-12 text-white text-center mt-2">
+                XBOX GAME STORE
+            </h2>
+            <h4 class="col-12 text-white text-center mt-4 mb-4">
+                Платформа цифровой дистрибуции для XBOX, предлагающая пользователям со всего мира приобрести контент по выгодным ценам!
+            </h4>
+        </div>
+    </div>
+</section>
+<section class="section-four">
+    <div class="container">
+        <div class="row text-white">
+            <h2 class="col-12 mt-3 mb-4">
+                Особенности
+            </h2>
+            <ul><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Гарантия возврата денег</h5>
+                <li>
+                    Мы уверены в качестве нашей продукции, и если купленный вами товар не работает или не соответствует описанию, мы возвращаем деньги, при условии, что не можем заменить его в течение 72 часов. Будьте внимательны при активации ключей. Легко спутать символы I, L и 1 , V и Y, 0 и O. Проверьте, правильно ли Вы ввели все буквы и цифры, перед тем, как писать в службу поддержки магазина. Помните, что магазин работает в зоне .РУ и гарантирует активацию игр только в России, Украине, Белоруссии, и других странах СНГ.
+                </li>
+            </ul>
+            <ul><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Только лицензионная продукция</h5>
+                <li>
+                    Все игры закупаются у официальных издателей игры. На все игры предоставляется вечная гарантия. После покупки, лицензионные ключи Вы можете активировать в любое время, когда удобно Вам.
+                </li>
+            </ul>
+            <ul><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Служба поддержки клиентов</h5>
+                <li>
+                    Ежедневно с 11:00 до 22:00 по Московскому времени, Вы можете получить оперативный ответ на любой вопрос относительно игры, которая вас заинтересует. Контакты указаны внизу сайта.
+                </li>
+            </ul>
+            <ul><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Политика конфиденциальности</h5>
+                <li>
+                    Наш магазин стремится оказывать посетителям веб-сайта услуги высокого класса и уделяет особое внимание вопросам связанным с конфиденциальностью. Мы не продаем Ваши персональные данные третьим лицам. Все продукты предоставленные на сайте - уникальны, и продаются только 1 раз и только в одни руки.
+                </li>
+            </ul>
+            <ul><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Последние новинки</h5>
+                <li>
+                    Новые игры появляются в нашем каталоге быстрее, чем новости об их релизе в Рунете.
+                </li>
+            </ul>
+            <div class="row mt-4">
+                <div class="about-xbox-block col-md-6 col-12 d-flex flex-column align-items-center justify-content-center">
+                    <ul><h4><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Удобный каталог с поиском</h4>
+                        <li>
+                            Все игры собраны по жанрам, чтобы вам было легче искать. Мы ценим ваше время.
+                        </li>
+                    </ul>
+                    <a href="{% url 'catalog' %}"><button type="button" class="buy-btn btn btn-success btn-lg">ПЕРЕЙТИ В КАТАЛОГ</button></a>
+
+                </div>
+                <div class="col-md-6 col-12">
+                    <img src="{% static 'img/catalog.jpg'%}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6 col-12 about-xbox-img order-2 order-md-1">
+                    <img src="{% static 'img/adaptation.jpg'%}" alt="" class="img-fluid">
+                </div>
+                <div class="about-xbox-block col-md-6 col-12 d-flex flex-column align-items-center justify-content-center order-1 order-md-2">
+                    <ul><h4><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Адаптивный дизайн</h4>
+                        <li>
+                            Нашим магазином удобно пользоваться с компьютера, плашета, смартфона и других гаджетов.
+                            <br><br>
+                            Мы позаботились о вашем удобстве :)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="mt-5"><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Реальные отзывы о работе и товарах</h5>
+                <li>
+                    На странице Отзывов вы найдете можете увидеть различные сообщения, в которых реальные люди делятся впечатлениями о работе сайта.
+                </li>
+            </ul>
+            <h4 class="text-center mt-4 mb-5">Только магазин, сфокусированный на своём продвижении и развитии по всем направлениям, должен привлекать ваше внимание и вызывать доверие. Таким магазином являемся мы!</h4>
+        </div>
+    </div>
+</section>
+
+    {% include 'store/includes/footer.html' %}
+{% endblock %}

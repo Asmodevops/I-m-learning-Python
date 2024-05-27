@@ -6,10 +6,13 @@ from store import views
 urlpatterns = [
     path('', views.index, name='homepage'),
     path('catalog/', views.catalog, name='catalog'),
-    path('guarantee/', views.guarantee, name='guarantee'),
+    path('about/', views.about, name='about'),
     path('feedback/', views.feedback, name='feedback'),
     path('search/', views.game_search, name='search'),
-    path('game/<int:game_id>/', views.show_game, name='game'),
+    path('agreement/', views.agreement, name='agreement'),
+    path('privacy/', views.privacy, name='privacy'),
+    path('personal-data/', views.personal_data, name='personal-data'),
+    path('catalog/game/<int:game_id>/', views.show_game, name='game'),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-game.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row d-none d-lg-block">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'catalog' %}">Каталог</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ game.title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 xbox-game-banner">
+                <img src="{{ game.banner_image.url }}" alt="{{ game.title }}" class="game-banner">
+            </div>
+            <div class="col-md-9 col-lg-7 blck-game-description">
+                <h2 class="text-white">{{ game.title }}</h2>
+                <div class="d-flex">
+                    <p class="genre-text">
+                        {% for genre in game.genres.all %}
+                            {{ genre.name }}
+                            {% if not forloop.last %} {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                <h4 class="text-white">Описание игры:</h4>
+                <div class="game-description">
+                    <p class="text-white initial-height">
+                        {{ game.description|safe }}
+                    </p>
+                </div>
+                <button class="btn-expand d-none">Развернуть</button>
+                <br>
+                <h5 class="text-white">Технические возможности игры:</h5>
+                <div class="d-flex">
+                    <p class="genre-text">
+                        {% for feature in game.features.all %}
+                            {{ feature.name }}
+                            {% if not forloop.last %} > {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+                <p class="text-white">Дата релиза: {{ game.release_date }}</p>
+                <br>
+                <div class="d-flex align-items-center">
+                    <h3 class="text-white">Цена: {{ game.price }}₽</h3>
+                    <br>
+                    <div class="xbox-buy-div">
+                        <a href="#" title="...">
+                            <button type="button" class="buy-btn btn btn-success btn-lg">
+                                КУПИТЬ
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="section-three">
+    <div class="container">
+        <div class="row">
+            <h1 class="text-white text-center">Мы также рекомендуем: </h1>
+        </div>
+        <div class="row">
+            {% for game in games %}
+            <div class="col-lg-2 col-md-4 col-6 xbox">
+                <a href="{% url 'game' game.id  %}" title="{{ game.title }}">
+                    <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'store/includes/footer.html' %}
+{% block extra_js %}
+<script src="{% static 'js/game-script.js' %}"></script>
+{% endblock %}
+{% endblock %}

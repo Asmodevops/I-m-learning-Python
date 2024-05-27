@@ -6,18 +6,14 @@
 {% block content %}
 {% include 'store/includes/navbar.html' %}
 
-<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ НАЧАЛО -->
-
 <section class="section-one">
     <div class="container">
     </div>
 </section>
-<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
 
-<!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
 <section class="section-two">
     <div class="container">
-        <div class="row">
+        <div class="row d-none d-lg-block">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
@@ -114,7 +110,7 @@
                 {% endfor %}
                 {% if page_obj.has_next %}
                 <div class="row mt-3 justify-content-center w-100" id="load-more-container">
-                    <button id="load-more-btn" class="btn btn-primary"
+                    <button id="load-more-btn" class="btn btn-primary xbox-load-more-btn"
                         data-next-page="{{ page_obj.next_page_number }}">Загрузить еще
                     </button>
                 </div>
@@ -124,8 +120,11 @@
         </div>
     </div>
 </section>
-<!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
+
 
 
 {% include 'store/includes/footer.html' %}
+{% block extra_js %}
+<script src="{% static 'js/catalog-script.js' %}"></script>
+{% endblock %}
 {% endblock %}

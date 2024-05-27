@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateGames() {
         const filters = getFilterValues();
 
-        // Убедимся, что в объекте filters нет ключей с пустыми значениями
         if (!filters.price) {
             delete filters.price;
         }
@@ -57,13 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     const gameCard = document.createElement('div');
                     gameCard.classList.add('d-flex', 'mb-5', 'game-card', 'p-3');
                     gameCard.innerHTML = `
-                        <a href="/game/${game.id}" title="${game.title}" class="d-flex">
+                        <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex">
                             <img src="${game.image}" class="img-fluid" alt="${game.title}">
                             <div class="d-flex flex-column">
                                 <h3 class="text-white">${game.title}</h3>
                                 <br>
                                 <br>
-                                <p class="text-white text-justify">${truncateWords(game.description, 50)}</p>
+                                <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
                                 <br>
                                 <h5 class="text-white">Цена: ${game.price}</h5>
                             </div>
@@ -74,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (data.has_next) {
                     loadMoreBtn.setAttribute('data-next-page', data.next_page_number);
-                    gameContainer.appendChild(loadMoreContainer); // Перемещаем кнопку в конец
+                    gameContainer.appendChild(loadMoreContainer);
                     loadMoreContainer.style.display = 'block';
                 } else {
                     loadMoreContainer.style.display = 'none';
@@ -90,42 +89,39 @@ document.addEventListener('DOMContentLoaded', function() {
     priceCheckboxes.forEach(function(checkbox) {
         checkbox.addEventListener('click', function() {
             if (checkbox.checked) {
-                // Сбросить остальные чекбоксы по цене
                 priceCheckboxes.forEach(function(cb) {
                     if (cb !== checkbox) {
                         cb.checked = false;
                     }
                 });
             }
-            updateGames(); // Обновить список игр после изменения фильтров
+            updateGames();
         });
     });
 
     genreCheckboxes.forEach(function(checkbox) {
         checkbox.addEventListener('click', function() {
             if (checkbox.checked) {
-                // Сбросить остальные чекбоксы по жанру
                 genreCheckboxes.forEach(function(cb) {
                     if (cb !== checkbox) {
                         cb.checked = false;
                     }
                 });
             }
-            updateGames(); // Обновить список игр после изменения фильтров
+            updateGames();
         });
     });
 
     featureCheckboxes.forEach(function(checkbox) {
         checkbox.addEventListener('click', function() {
             if (checkbox.checked) {
-                // Сбросить остальные чекбоксы по техническим возможностям
                 featureCheckboxes.forEach(function(cb) {
                     if (cb !== checkbox) {
                         cb.checked = false;
                     }
                 });
             }
-            updateGames(); // Обновить список игр после изменения фильтров
+            updateGames();
         });
     });
 
@@ -145,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         const gameCard = document.createElement('div');
                         gameCard.classList.add('d-flex', 'mb-5', 'game-card', 'p-3');
                         gameCard.innerHTML = `
-                            <a href="/game/${game.id}" title="${game.title}" class="d-flex">
+                            <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex">
                                 <img src="${game.image}" class="img-fluid" alt="${game.title}">
                                 <div class="d-flex flex-column">
                                     <h3 class="text-white">${game.title}</h3>
@@ -162,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     if (data.has_next) {
                         loadMoreBtn.setAttribute('data-next-page', data.next_page_number);
-                        gameContainer.appendChild(loadMoreContainer); // Перемещаем кнопку в конец
+                        gameContainer.appendChild(loadMoreContainer);
                     } else {
                         loadMoreContainer.style.display = 'none';
                     }
