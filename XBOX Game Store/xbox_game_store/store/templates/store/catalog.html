@@ -2,6 +2,7 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style-catalog.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
 {% include 'store/includes/navbar.html' %}
@@ -110,7 +111,7 @@
                 {% endfor %}
                 {% if page_obj.has_next %}
                 <div class="row mt-3 justify-content-center w-100" id="load-more-container">
-                    <button id="load-more-btn" class="btn btn-primary xbox-load-more-btn"
+                    <button id="load-more-btn" class="buy-btn btn btn-success btn-lg xbox-load-more-btn"
                         data-next-page="{{ page_obj.next_page_number }}">Загрузить еще
                     </button>
                 </div>
@@ -121,9 +122,6 @@
     </div>
 </section>
 
-
-
-{% include 'store/includes/footer.html' %}
 {% block extra_js %}
 <script src="{% static 'js/catalog-script.js' %}"></script>
 {% endblock %}

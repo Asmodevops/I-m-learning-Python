@@ -27,31 +27,30 @@
     color: #09eb58;
 }
 
-.section-three{
-    background-color: #16181b;
+
+.btn-success{
+    background-color: #09A13E;
+    width: 240px;
 }
 
-.section-four{
-    background-color: #16181b;
+.btn-success:hover{
+    background-color: #04772c;
 }
 
-.about-xbox-block{
-    padding: 30px;
+.form-group{
+    font-size: 14pt;
 }
 
-.about-xbox-img{
-    display: flex;
-    justify-content: end;
+.form-input{
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    width: 380px;
 }
 
-.about-xbox-img img{
-    max-height: 500px;
+.register-done-section{
+    height: 50vh;
 }
 
-.about-checkmark{
-    width: 40px;
-}
-
-.section-three{
-    text-align: justify;
+.text-red{
+    color: red;
 }

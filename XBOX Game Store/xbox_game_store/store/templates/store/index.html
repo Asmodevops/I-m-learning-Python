@@ -2,217 +2,204 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-main.css' %}">
 {% endblock %}
 {% block content %}
     {% include 'store/includes/navbar.html' %}
 
-    <!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ НАЧАЛО -->
+<section class="section-one">
+    <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
+        <h1>XBOX</h1>
+        <h2>GAME STORE</h2>
+    </div>
+</section>
 
-    <section class="section-one">
-        <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
-            <h1>XBOX</h1>
-            <h2>GAME STORE</h2>
-        </div>
-    </section>
-    <!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
-
-    <!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
-    <section class="section-two">
-        <div class="container">
-            <div class="row">
-                <div class="col-xxl-8 col-xl-12">
-                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            {% for item in carousel %}
-                            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                                <div class="row g-0">
-                                    <div class="col-8 position-relative">
-                                        <a href="{% url 'game' item.game1.id %}"><img src="{{ item.big_image.url }}"
-                                                class="d-block h-100 object-fit-cover w-auto img-fluid" alt="..."></a>
-                                        <div class="carousel-caption d-none d-lg-block text-center position-absolute bottom-0 start-50 translate-middle-x text-white">
-                                            <h5>{{ item.caption }}</h5>
-                                        </div>
+<section class="section-two">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-8 col-xl-12">
+                <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for item in carousel %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="row g-0">
+                                <div class="col-8 position-relative">
+                                    <a href="{% url 'game' item.game1.id %}"><img src="{{ item.big_image.url }}"
+                                            class="d-block h-100 object-fit-cover w-auto img-fluid" alt="..."></a>
+                                    <div class="carousel-caption d-none d-lg-block text-center position-absolute bottom-0 start-50 translate-middle-x text-white">
+                                        <h5>{{ item.caption }}</h5>
                                     </div>
-                                    <div class="col-4 d-flex flex-column">
-                                        <div class="flex-fill">
-                                            <a href="{% url 'game' item.game2.id %}"><img src="{{ item.small_image2.url }}"
-                                                    class="d-block h-100 object-fit-cover w-auto img-fluid"
-                                                    alt="..."></a>
-                                        </div>
-                                        <div class="flex-fill">
-                                            <a href="{% url 'game' item.game3.id %}"><img src="{{ item.small_image3.url }}"
-                                                    class="d-block h-100 object-fit-cover w-auto img-fluid"
-                                                    alt="..."></a>
-                                        </div>
+                                </div>
+                                <div class="col-4 d-flex flex-column">
+                                    <div class="flex-fill">
+                                        <a href="{% url 'game' item.game2.id %}"><img src="{{ item.small_image2.url }}"
+                                                class="d-block h-100 object-fit-cover w-auto img-fluid"
+                                                alt="..."></a>
+                                    </div>
+                                    <div class="flex-fill">
+                                        <a href="{% url 'game' item.game3.id %}"><img src="{{ item.small_image3.url }}"
+                                                class="d-block h-100 object-fit-cover w-auto img-fluid"
+                                                alt="..."></a>
                                     </div>
                                 </div>
                             </div>
-                            {% endfor %}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Предыдущий</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Следующий</span>
-                        </button>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="xbox-card col-xxl-4 col-xl-12 d-flex">
-                    <div class="row col-xxl-12 col-xl-6">
-                        <!-- Первый ряд картинок -->
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.0.id  %}" title="{{ games.0.title }}">
-                                <img src="{{ games.0.banner_image.url }}" class="img-fluid" alt="{{ games.0.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.1.id  %}" title="{{ games.1.title }}">
-                                <img src="{{ games.1.banner_image.url }}" class="img-fluid" alt="{{ games.1.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.2.id  %}" title="{{ games.2.title }}">
-                                <img src="{{ games.2.banner_image.url }}" class="img-fluid" alt="{{ games.2.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.3.id  %}" title="{{ games.3.title }}">
-                                <img src="{{ games.3.banner_image.url }}" class="img-fluid" alt="{{ games.3.title }}">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row col-xxl-12 col-xl-6">
-                        <!-- Второй ряд картинок -->
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.4.id  %}" title="{{ games.4.title }}">
-                                <img src="{{ games.4.banner_image.url }}" class="img-fluid" alt="{{ games.4.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.5.id  %}" title="{{ games.5.title }}">
-                                <img src="{{ games.5.banner_image.url }}" class="img-fluid" alt="{{ games.5.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.6.id  %}" title="{{ games.6.title }}">
-                                <img src="{{ games.6.banner_image.url }}" class="img-fluid" alt="{{ games.6.title }}">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-6">
-                            <a href="{% url 'game' games.7.id  %}" title="{{ games.7.title }}">
-                                <img src="{{ games.7.banner_image.url }}" class="img-fluid" alt="{{ games.7.title }}">
-                            </a>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Предыдущий</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Следующий</span>
+                    </button>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
-
-    <!-- ТРЕТИЙ РАЗДЕЛ НАЧАЛО -->
-    <section class="section-three">
-        <div class="container">
-            <div class="row">
-                <div class="col-xxl-6 col-xl-12 content-container d-flex flex-column">
-                    <h1 class="text-white text-left">
-                        XBOX GAME PASS
-                    </h1>
-                    <p class="text-white text-left">
-                        Xbox Game Pass Ultimate включает доступ к многопользовательскому режиму игры по сети на консоли
-                        и сотням высококачественных игр. Играйте в игры с друзьями на консоли и ПК и получите членство в
-                        EA Play — и все это по одной низкой ежемесячной цене.
-                    </p>
-                    <p class="text-white text-left">
-                        ✅XBOX GAME PASS ULTIMATE на 1+1⭐ месяц🔥950₽🔥
-                    </p>
-                    <p class="text-white text-left">
-                        ✅XBOX GAME PASS ULTIMATE на 5+1⭐ месяцев 🔥2690₽🔥
-                    </p>
-                    <p class="text-white text-left">
-                        ✅XBOX GAME PASS ULTIMATE на 9+1⭐ месяцев 🔥3790₽🔥
-                    </p>
-                    <p class="text-white text-left">
-                        ✅XBOX GAME PASS ULTIMATE на 13+1⭐ месяцев 🔥5090₽🔥
-                    </p>
-                    <p class="text-white text-left">
-                        ✅XBOX GAME PASS ULTIMATE на 25+1⭐ месяцев 🔥9590₽🔥
-                    </p>
-                    <p class="text-white text-left">
-                        ПРИОБРЕТИ ПОДПИСКУ XBOX GAME PASS И ПОЛУЧИ ДОСТУП К СОТНЕ ВЫСОКОКАЧЕСТВЕННЫХ ИГР
-                    </p>
-                    <div class="xbox-buy-div">
-                        <a href="#" title="...">
-                            <button type="button" class="buy-btn btn btn-success btn-lg">
-                                КУПИТЬ
-                            </button>
+            <div class="xbox-card col-xxl-4 col-xl-12 d-flex">
+                <div class="row col-xxl-12 col-xl-6">
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.0.id  %}" title="{{ games.0.title }}">
+                            <img src="{{ games.0.banner_image.url }}" class="img-fluid" alt="{{ games.0.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.1.id  %}" title="{{ games.1.title }}">
+                            <img src="{{ games.1.banner_image.url }}" class="img-fluid" alt="{{ games.1.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.2.id  %}" title="{{ games.2.title }}">
+                            <img src="{{ games.2.banner_image.url }}" class="img-fluid" alt="{{ games.2.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.3.id  %}" title="{{ games.3.title }}">
+                            <img src="{{ games.3.banner_image.url }}" class="img-fluid" alt="{{ games.3.title }}">
                         </a>
                     </div>
                 </div>
-                <div class="gamepass col-xxl-6 col-xl-12">
-                    <img src="{% static 'img/gamepass.jpg'%}" alt="" class="img-fluid">
+                <div class="row col-xxl-12 col-xl-6">
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.4.id  %}" title="{{ games.4.title }}">
+                            <img src="{{ games.4.banner_image.url }}" class="img-fluid" alt="{{ games.4.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.5.id  %}" title="{{ games.5.title }}">
+                            <img src="{{ games.5.banner_image.url }}" class="img-fluid" alt="{{ games.5.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.6.id  %}" title="{{ games.6.title }}">
+                            <img src="{{ games.6.banner_image.url }}" class="img-fluid" alt="{{ games.6.title }}">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <a href="{% url 'game' games.7.id  %}" title="{{ games.7.title }}">
+                            <img src="{{ games.7.banner_image.url }}" class="img-fluid" alt="{{ games.7.title }}">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ТРЕТИЙ РАЗДЕЛ КОНЕЦ -->
+    </div>
+</section>
 
-    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ НАЧАЛО -->
-    <section class="section-four">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-12 order-2 order-xl-1">
-                    <div class="news-img">
-                        <img src="{{ news.0.image.url }}" alt="" class="img-fluid">
-                    </div>
-                </div>
-                <div class="news-text col-xl-4 col-lg-12 order-1 order-xl-2">
-                    <h3 class="text-white">
-                        {{ news.0.title }}
-                    </h3>
-                    <p class="text-white">
-                        {{ news.0.content|safe }}
-                    </p>
-                </div>
-                <div class="col-xl-2 d-none d-xl-block d-flex align-self-end order-3">
-                    <div class="news-png-img">
-                        <img src="{% static 'img/pngwing.png' %}" alt="" class="img-fluid">
-                    </div>
+<section class="section-three">
+    <div class="container">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-12 content-container d-flex flex-column">
+                <h1 class="text-white text-left">
+                    XBOX GAME PASS
+                </h1>
+                <p class="text-white text-left">
+                    Xbox Game Pass Ultimate включает доступ к многопользовательскому режиму игры по сети на консоли
+                    и сотням высококачественных игр. Играйте в игры с друзьями на консоли и ПК и получите членство в
+                    EA Play — и все это по одной низкой ежемесячной цене.
+                </p>
+                <p class="text-white text-left">
+                    ✅XBOX GAME PASS ULTIMATE на 1+1⭐ месяц🔥950₽🔥
+                </p>
+                <p class="text-white text-left">
+                    ✅XBOX GAME PASS ULTIMATE на 5+1⭐ месяцев 🔥2690₽🔥
+                </p>
+                <p class="text-white text-left">
+                    ✅XBOX GAME PASS ULTIMATE на 9+1⭐ месяцев 🔥3790₽🔥
+                </p>
+                <p class="text-white text-left">
+                    ✅XBOX GAME PASS ULTIMATE на 13+1⭐ месяцев 🔥5090₽🔥
+                </p>
+                <p class="text-white text-left">
+                    ✅XBOX GAME PASS ULTIMATE на 25+1⭐ месяцев 🔥9590₽🔥
+                </p>
+                <p class="text-white text-left">
+                    ПРИОБРЕТИ ПОДПИСКУ XBOX GAME PASS И ПОЛУЧИ ДОСТУП К СОТНЕ ВЫСОКОКАЧЕСТВЕННЫХ ИГР
+                </p>
+                <div class="xbox-buy-div">
+                    <a href="#" title="...">
+                        <button type="button" class="buy-btn btn btn-success btn-lg">
+                            КУПИТЬ
+                        </button>
+                    </a>
                 </div>
             </div>
+            <div class="gamepass col-xxl-6 col-xl-12">
+                <img src="{% static 'img/gamepass.jpg'%}" alt="" class="img-fluid">
+            </div>
         </div>
-    </section>
-    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ КОНЕЦ -->
+    </div>
+</section>
 
-    <!-- ПЯТЫЙ РАЗДЕЛ НАЧАЛО -->
-    <section class="section-five">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-2 d-none d-xl-block d-flex align-self-end">
-                    <div class="news-png-img">
-                        <img src="{% static 'img/pngwing2.png' %}" alt="" class="img-fluid">
-                    </div>
+<section class="section-four">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-12 order-2 order-xl-1">
+                <div class="news-img">
+                    <img src="{{ news.0.image.url }}" alt="" class="img-fluid">
                 </div>
-                <div class="news-text col-xl-4 col-lg-12">
-                    <h3 class="text-white">
-                        {{ news.1.title }}
-                    </h3>
-                    <p class="text-white">
-                        {{ news.1.content|safe }}
-                    </p>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="news-img">
-                        <img src="{{ news.1.image.url }}" alt="" class="img-fluid">
-                    </div>
+            </div>
+            <div class="news-text col-xl-4 col-lg-12 order-1 order-xl-2">
+                <h3 class="text-white">
+                    {{ news.0.title }}
+                </h3>
+                <p class="text-white">
+                    {{ news.0.content|safe }}
+                </p>
+            </div>
+            <div class="col-xl-2 d-none d-xl-block d-flex align-self-end order-3">
+                <div class="news-png-img">
+                    <img src="{% static 'img/pngwing.png' %}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ЧЕТВЕРТЫЙ РАЗДЕЛ КОНЕЦ -->
-    {% include 'store/includes/footer.html' %}
+    </div>
+</section>
+
+<section class="section-five">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-2 d-none d-xl-block d-flex align-self-end">
+                <div class="news-png-img">
+                    <img src="{% static 'img/pngwing2.png' %}" alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="news-text col-xl-4 col-lg-12">
+                <h3 class="text-white">
+                    {{ news.1.title }}
+                </h3>
+                <p class="text-white">
+                    {{ news.1.content|safe }}
+                </p>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="news-img">
+                    <img src="{{ news.1.image.url }}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

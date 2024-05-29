@@ -2,6 +2,7 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style-game.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
 {% include 'store/includes/navbar.html' %}
@@ -90,9 +91,6 @@
     </div>
 </div>
 
-
-
-{% include 'store/includes/footer.html' %}
 {% block extra_js %}
 <script src="{% static 'js/game-script.js' %}"></script>
 {% endblock %}

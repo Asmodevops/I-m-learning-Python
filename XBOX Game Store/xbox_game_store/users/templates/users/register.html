@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row d-none d-lg-block">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-white">
+            <div class="col-12 xbox-auth d-flex flex-column align-items-center">
+
+                <h1 class="mb-2">{{ title }}</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}"/>
+
+                    {% for field in form %}
+                    <div class="form-group d-flex flex-column align-items-center mt-2">
+                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% for error in field.errors %}
+                        <div class="col-12 xbox-auth d-flex flex-column align-items-center">
+                            <p class="text-red">
+                                {{ error }}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-12 xbox-auth d-flex flex-column align-items-center">
+                    {% if form.non_field_errors %}
+                        <p class="mt-2 text-red">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </p>
+                    {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 xbox-auth d-flex flex-column align-items-center mb-4">
+                    <div class="form-group text-center mt-4">
+                        <button type="submit" class="buy-btn btn btn-success btn-lg">Зарегистрироваться</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+{% endblock %}

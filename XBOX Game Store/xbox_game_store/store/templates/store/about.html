@@ -2,6 +2,7 @@
 {% load static %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style-about.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
 {% include 'store/includes/navbar.html' %}
@@ -10,9 +11,7 @@
     <div class="container">
     </div>
 </section>
-<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
 
-<!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
 <section class="section-two">
     <div class="container">
         <div class="row">
@@ -99,7 +98,7 @@
             </div>
             <ul class="mt-5"><h5><img src="{% static 'img/icon/check.png'%}" alt="" class="about-checkmark">Реальные отзывы о работе и товарах</h5>
                 <li>
-                    На странице Отзывов вы найдете можете увидеть различные сообщения, в которых реальные люди делятся впечатлениями о работе сайта.
+                    На странице Отзывов вы можете увидеть различные сообщения, в которых реальные люди делятся впечатлениями о работе сайта.
                 </li>
             </ul>
             <h4 class="text-center mt-4 mb-5">Только магазин, сфокусированный на своём продвижении и развитии по всем направлениям, должен привлекать ваше внимание и вызывать доверие. Таким магазином являемся мы!</h4>
@@ -107,5 +106,4 @@
     </div>
 </section>
 
-    {% include 'store/includes/footer.html' %}
 {% endblock %}

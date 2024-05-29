@@ -10,9 +10,7 @@
     <div class="container">
     </div>
 </section>
-<!-- ПЕРВЫЙ РАЗДЕЛ ПОД НАВИГАЦИЕЙ КОНЕЦ -->
 
-<!-- ВТОРОЙ РАЗДЕЛ НАЧАЛО -->
 <section class="section-two">
     <div class="container">
         <div class="row">
@@ -25,11 +23,11 @@
         </div>
     </div>
 </section>
-<!-- ВТОРОЙ РАЗДЕЛ КОНЕЦ -->
+
 <section class="section-three text-white">
     <div class="container">
         <div class="row">
-            <h2 class="col-12 mt-2">
+            <h2 class="col-12 mt-2 mb-5">
                 СОГЛАШЕНИЕ
             </h2>
             <p class="text-justify">
@@ -157,15 +155,8 @@
                 <li>Согласие на обработку персональных данных, размещенное на Сайте по адресу: <a href="{% url 'privacy' %}">xbox-game-store.ru/privacy</a></li>
                 <li>Политика в области обработки персональных данных, размещенная на Cайте по адресу: <a href="{% url 'personal-data' %}">xbox-game-store.ru/personal-data</a></li>
             </p>
-
-
-
-
-
         </div>
     </div>
 </section>
 
-
-    {% include 'store/includes/footer.html' %}
 {% endblock %}

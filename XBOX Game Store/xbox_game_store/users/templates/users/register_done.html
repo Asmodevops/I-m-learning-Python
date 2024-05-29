@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 xbox-auth d-flex flex-column justify-content-center align-items-center mb-5 register-done-section">
+                <h1 class="mb-5">Поздравляем!</h1>
+                <p class="form-group">Вы успешно зарегистрировались на сайте XBOX Game Store. Советуем Вам ознакомиться с пользовательским соглашением. Для входа в систему необходимо <a href="{% url 'users:login' %}">авторизоваться</a>.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

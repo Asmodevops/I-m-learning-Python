@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{% static 'img/site_icon.png' %}"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-body.css' %}">
     {% block extra_css %}{% endblock extra_css %}
     <title>XBOX Game Store - {{ title }}</title>
 </head>
@@ -15,7 +17,47 @@
 {% block extra_js %}
 {% endblock extra_js %}
 {% endblock content %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 d-flex align-items-center">
+                <img src="{% static 'img/icon/key.png' %}" alt="" class="footer-ico img-fluid">
+                <p class="text-justify">Лицензионные ключи от официальных издателей</p>
+            </div>
+            <div class="col-lg-4 d-flex align-items-center">
+                <img src="{% static 'img/icon/gears.png' %}" alt="" class="footer-ico img-fluid">
+                <p class="text-justify">Гарантированная техподдержка вашей покупки</p>
+            </div>
+            <div class="col-lg-4 d-flex align-items-center ">
+                <img src="{% static 'img/icon/tool.png' %}" alt="" class="footer-ico img-fluid">
+                <p class="text-justify">Регулярные акции, скидки и бонусы</p>
+            </div>
+        </div>
+        <div class="row d-flex pt-3">
+                <div class="col-xl-3 col-lg-6">
+                    <a href="{% url 'agreement' %}">Пользовательское соглашение</a>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <a href="{% url 'privacy' %}">Политика конфиденциальности</a>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <a href="{% url 'agreement' %}#returnpolicy">Политика возврата</a>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <a href="{% url 'personal-data' %}">Согласие на обработку персональных данных</a>
+                </div>
+        </div>
+        <div class="row pt-3">
+            <div class="d-flex align-items-start">
+                <img src="{% static 'img/icon/fcopyright.png' %}" alt="" class="footer-copyright-ico img-fluid">
+                <h5>2024</h5>
+            </div>
+            <p class="ltl-txt">Все права защищены. Полное или частичное копирование материалов сайта без согласования с администрацией запрещено! <br>
+                Все названия игр, компаний, торговых марок, логотипы и игровые материалы являются собственностью соответствующих владельцев.</p>
 
+        </div>
+    </div>
+</footer>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

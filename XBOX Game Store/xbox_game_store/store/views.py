@@ -1,7 +1,8 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseNotFound, JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView
 
 from store.models import Game, CarouselItem, News, Genre, Feature
 import random
@@ -20,22 +21,15 @@ def get_random_games(count: int):
     return games
 
 
-def index(request):
-    games = get_random_games(8)
-
-    carousel = CarouselItem.objects.all()
-    news = News.objects.order_by('-id')[:2]
-
-
-    data = {
-        'games': games,
-        'carousel': carousel,
-        'news': news,
+class HomePage(TemplateView):
+    template_name = 'store/index.html'
+    extra_context = {
+        'games': get_random_games(8),
+        'carousel': CarouselItem.objects.all(),
+        'news': News.objects.order_by('-id')[:2],
         'title': 'Главная страница',
         'current_page': 'homepage',
     }
-
-    return render(request, 'store/index.html', context=data)
 
 
 def catalog(request):
@@ -96,13 +90,13 @@ def catalog(request):
     return render(request, 'store/catalog.html', context=data)
 
 
-
-def about(request):
-    data = {
+class AboutPage(TemplateView):
+    template_name = 'store/about.html'
+    extra_context = {
         'title': 'Гарантии',
         'current_page': 'about',
     }
-    return render(request, 'store/about.html', data)
+
 
 def agreement(request):
     data = {
@@ -129,17 +123,48 @@ def feedback(request):
 def game_search(request):
     return HttpResponse(f'<h1>ЗДЕСЬ БУДЕТ СТРАНИЦА ПОИСКА ИГР приложения XBOX Game Store</h1>')
 
-def show_game(request, game_id):
-    game = get_object_or_404(Game, id=game_id)
-    games = get_random_games(6)
-    while game in games:
+
+class ShowGame(ListView):
+    template_name = 'store/game.html'
+    context_object_name = 'games'
+
+    def get_queryset(self):
+        game_id = self.kwargs['game_id']
+        self.game = get_object_or_404(Game, id=game_id)
+
         games = get_random_games(6)
+        while self.game in games:
+            games = get_random_games(6)
 
-    context = {
-        'game': game,
-        'games': games,
-        'current_page': 'catalog',
-        'title': game.title
-    }
-    return render(request, 'store/game.html', context)
+        return games
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['game'] = self.game
+        context['current_page'] = 'catalog'
+        context['title'] = self.game.title
+        return context
+
+
+
+# class ShowGame(DetailView):
+#     model = Game
+#     template_name = 'store/game.html'
+#     context_object_name = 'game'
+#
+#     def get_object(self):
+#         game_id = self.kwargs['game_id']
+#         return get_object_or_404(Game, id=game_id)
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         game = self.get_object()
+#
+#         games = get_random_games(6)
+#         while game in games:
+#             games = get_random_games(6)
+#
+#         context['games'] = games
+#         context['current_page'] = 'catalog'
+#         context['title'] = game.title
+#         return context
