@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-feedback.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mb-5">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row text-white mt-5 mb-4">
+            <h1>
+                {{ title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="section-three">
+    <div class="container">
+        <div class="row text-white">
+            {% if user.is_authenticated %}
+            <form method="post" class="d-flex flex-column mb-3">
+                {% csrf_token %}
+                {{ form.text }}
+                {{ form.text.errors }}
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-success btn-lg">Отправить</button>
+                </div>
+            </form>
+            {% else %}
+                <p>Только авторизованные пользователи могут оставлять отзывы. <a href="{% url 'users:login' %}">Войдите</a> или <a href="{% url 'users:register' %}">зарегистрируйтесь</a>.</p>
+            {% endif %}
+        </div>
+        {% if feedbacks %}
+            {% for fb in feedbacks %}
+                <div class="row d-flex p-2 fb-item mb-3 text-white">
+                    <div>
+                        <strong>{{ fb.user.username }}</strong> ({{ fb.created_at }}): <br>
+                        {{ fb.text }}
+                        {% if fb.user == user or user.is_staff %}
+                            <form method="post" style="display:inline;">
+                                {% csrf_token %}
+                                <input type="hidden" name="fb_id" value="{{ fb.id }}">
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" name="delete" class="btn btn-danger btn-sm">Удалить</button>
+                                </div>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <br>
+    </div>
+</section>
+
+{% endblock %}

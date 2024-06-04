@@ -1,11 +1,12 @@
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, ListView, DetailView
-
+from django.views.generic import TemplateView, ListView
+from store.forms import GameSearchForm
 from store.models import Game, CarouselItem, News, Genre, Feature
 import random
+
 
 def get_random_games(count: int):
     game_count = Game.objects.count()
@@ -104,11 +105,13 @@ def agreement(request):
     }
     return render(request, 'store/agreement.html', data)
 
+
 def privacy(request):
     data = {
         'title': 'Политика конфиденциальности'
     }
     return render(request, 'store/privacy.html', data)
+
 
 def personal_data(request):
     data = {
@@ -117,11 +120,29 @@ def personal_data(request):
     return render(request, 'store/personal-data.html', data)
 
 
-def feedback(request):
-    return HttpResponse(f'<h1>ЗДЕСЬ БУДУТ ОТЗЫВЫ к приложению XBOX Game Store</h1>')
-
 def game_search(request):
-    return HttpResponse(f'<h1>ЗДЕСЬ БУДЕТ СТРАНИЦА ПОИСКА ИГР приложения XBOX Game Store</h1>')
+    games = get_random_games(6)
+    query = ""
+    results = []
+    if 'query' in request.GET:
+        form = GameSearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Game.objects.filter(title__icontains=query)
+
+    else:
+        form = GameSearchForm()
+
+    data = {
+        'title': 'Поиск игр',
+        'form': form,
+        'query': query,
+        'games': games,
+        'results': results,
+        'current_page': 'search',
+    }
+
+    return render(request, 'store/search.html', data)
 
 
 class ShowGame(ListView):
@@ -144,27 +165,3 @@ class ShowGame(ListView):
         context['current_page'] = 'catalog'
         context['title'] = self.game.title
         return context
-
-
-
-# class ShowGame(DetailView):
-#     model = Game
-#     template_name = 'store/game.html'
-#     context_object_name = 'game'
-#
-#     def get_object(self):
-#         game_id = self.kwargs['game_id']
-#         return get_object_or_404(Game, id=game_id)
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         game = self.get_object()
-#
-#         games = get_random_games(6)
-#         while game in games:
-#             games = get_random_games(6)
-#
-#         context['games'] = games
-#         context['current_page'] = 'catalog'
-#         context['title'] = game.title
-#         return context

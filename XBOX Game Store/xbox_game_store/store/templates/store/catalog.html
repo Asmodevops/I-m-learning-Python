@@ -101,8 +101,7 @@
                         <div class="d-flex flex-column">
                             <h3 class="text-white">{{ game.title }}</h3>
                             <br>
-                            <br>
-                            <p class="text-white text-justify">{{ game.description|truncatewords:50 }}</p>
+                            <p class="text-white text-justify">{{ game.description|safe|truncatewords:50 }}</p>
                             <br>
                             <h5 class="text-white">Цена: {{ game.price }}₽</h5>
                         </div>

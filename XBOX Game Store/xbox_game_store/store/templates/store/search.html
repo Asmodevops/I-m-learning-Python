@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-search.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mb-5">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row text-white mt-5 mb-4">
+            <h1>
+                {{ title }}
+            </h1>
+        </div>
+    </div>
+</section>
+
+<section class="section-three">
+    <div class="container">
+        <div class="row text-white">
+            <form method="get" class="d-flex justify-content-center pb-5 pt-1">
+                <input type="text" name="query" class="form-input w-100" placeholder="Введите название игры" value="{{ form.query.value|default_if_none:'' }}">
+                <button type="submit" class="btn btn-success btn-lg ms-3">Поиск</button>
+            </form>
+
+
+            {% if query %}
+                {% if results %}
+                    <h2>Результаты поиска</h2>
+                    <ul>
+                        {% for game in results %}
+                        <div class="d-flex mb-5 game-card p-3">
+                            <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex">
+                                <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
+                                <div class="d-flex flex-column">
+                                    <h3 class="text-white">{{ game.title }}</h3>
+                                    <br>
+                                    <p class="text-white text-justify">{{ game.description|safe|truncatewords:50 }}</p>
+                                    <br>
+                                    <h5 class="text-white">Цена: {{ game.price }}₽</h5>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="game-not-found">По данному запросу игры не найдены.</p>
+                {% endif %}
+            {% endif %}
+            <div class="container pb-5 pt-2 other-games">
+                <div class="row pt-3">
+                    <h1 class="text-white text-center">Возможно вам понравится: </h1>
+                </div>
+                <div class="row pt-4 pb-5">
+                    {% for game in games %}
+                    <div class="col-lg-2 col-md-4 col-6 xbox">
+                        <a href="{% url 'game' game.id  %}" title="{{ game.title }}">
+                            <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

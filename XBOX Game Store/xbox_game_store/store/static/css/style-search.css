@@ -1,0 +1,85 @@
+.section-two{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+    content: '>';
+}
+
+.breadcrumb-item a {
+    color: white;
+    transition: 0.3s color;
+}
+
+.breadcrumb-item a:hover {
+    color: #98ffbc;
+}
+
+.breadcrumb-item.active {
+    color: #09eb58;
+}
+
+.section-three{
+    background-color: #16181b;
+}
+
+.game-card{
+    border: 1px solid rgba(211, 210, 210, 0.1);
+    padding: 5px;
+}
+
+.game-card img{
+    max-height: 250px;
+    margin-right: 30px;
+}
+
+.game-card p{
+    text-align: justify;
+}
+
+.game-card a{
+    text-decoration: none;
+}
+
+.btn-success{
+    background-color: #09A13E;
+}
+
+.btn-success:hover{
+    background-color: #04772c;
+}
+
+.form-input{
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    width: 380px;
+}
+
+.game-not-found{
+    font-size: 14pt;
+}
+
+.other-games .row img{
+    max-height: 265px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.other-games .row img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px){
+    .other-games .row img{
+        margin-top: 30px;
+    }
+}

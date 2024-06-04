@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="d-flex flex-column">
                                 <h3 class="text-white">${game.title}</h3>
                                 <br>
-                                <br>
                                 <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
                                 <br>
                                 <h5 class="text-white">Цена: ${game.price}</h5>
@@ -146,8 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="d-flex flex-column">
                                     <h3 class="text-white">${game.title}</h3>
                                     <br>
-                                    <br>
-                                    <p class="text-white text-justify">${truncateWords(game.description, 50)}</p>
+                                    <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
                                     <br>
                                     <h5 class="text-white">Цена: ${game.price}</h5>
                                 </div>

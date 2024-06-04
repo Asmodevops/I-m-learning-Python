@@ -22,7 +22,7 @@
                             <a class="nav-link mx-lg-2 {% if current_page == 'about' %}active{% endif %}" href="{% url 'about' %}">Гарантии</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 {% if current_page == 'feedback' %}active{% endif %}" href="{% url 'feedback' %}">Отзывы</a>
+                            <a class="nav-link mx-lg-2 {% if current_page == 'feedback' %}active{% endif %}" href="{% url 'feedback:main' %}">Отзывы</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 {% if current_page == 'search' %}active{% endif %}" href="{% url 'search' %}"><img src="{% static 'img/magnifier.png' %}" alt="" width="20">Поиск игр</a>
