@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-gamepass.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container">
+    </div>
+</section>
+
+<section class="section-two">
+    <div class="container">
+        <div class="row mb-5">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'catalog' %}">Каталог</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section-three pb-5">
+    <div class="container text-white">
+        <div class="row row-gp-1">
+            <div class="col-xl-6 col-12">
+                <img src="{% static 'img/icon/gamepass.svg'%}" alt="" class="img-fluid gp-icon">
+                <h1 class="gp-header">XBOX GAME PASS</h1>
+                <br>
+                <p>
+                    Подписка Xbox Game Pass включает доступ к многопользовательскому режиму игры по сети на консоли и сотням высококачественных игр, включая новинки, популярные инди-проекты и хиты от известных разработчиков. Постоянные обновления и добавление новых игр обеспечивают, что вам никогда не будет скучно. Кроме того, Xbox Game Pass Ultimate включает в себя Xbox Live Gold, предоставляя многопользовательский онлайн-доступ и эксклюзивные скидки. Если вы хотите максимально использовать свой игровой опыт, подписка Xbox Game Pass — это лучший выбор для неограниченного доступа к множеству захватывающих игр.
+                </p>
+            </div>
+
+            <div class="col-xl-6 col-12 align-self-center">
+                <img src="{% static 'img/gamepass.jpg'%}" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section-four">
+    <div class="container text-white">
+        <div class="row pt-5 pb-5">
+            <h1 class="col-12 text-center mb-3">ИГРАЙТЕ В СОТНИ ВЫСОКОКАЧЕСТВЕННЫХ ИГР</h1>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-1.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Многопользовательский режим игры по сети на консоли включен</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-2.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Статус EA Play включен в подписку</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-3.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Играйте непосредственно на консоли и ПК</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-4.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Загружайте игры для консоли и ПК</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-5.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Скидки, предложения и бонусы для подписчиков</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center p-3">
+                <img src="{% static 'img/icon/gp-6.svg'%}" alt="" class="img-fluid gp-small-icon">
+                <p class="text-center mt-3">Игровая библиотека постоянно пополняется, в том числе новыми релизами в день их выхода</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-five pt-5 pb-5">
+    <div class="container text-white">
+        <div class="row row-gp-1">
+            <div class="col-xl-6 col-12 align-self-center order-2 order-xl-1">
+                <img src="{% static 'img/EAPlay.png'%}" alt="" class="img-fluid">
+            </div>
+
+            <div class="col-xl-6 col-12 order-1 order-xl-2">
+                <h1 class="gp-header">EA Play</h1>
+                <br>
+                <p>
+                    EA Play предоставляет доступ к лучшим играм Electronic Arts на консоли и ПК, предлагая вам еще больше возможностей для наслаждения вашими любимыми играми. С этой подпиской вы получите доступ к обширной библиотеке игр от EA, включая популярные франшизы.
+                </p>
+                <br>
+                <p>
+                    Специальный контент, созданный только для подписчиков, добавляет новые уровни погружения в игровой процесс. Кроме того, EA Play предоставляет возможность раннего доступа к пробным версиям избранных новых игр EA. В итоге, EA Play предоставляет невероятную ценность для всех поклонников игр от Electronic Arts, предлагая множество бонусов и преимуществ для подписчиков.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-six pt-5 pb-5">
+    <div class="container text-white">
+        <div class="row">
+            <h1 class="text-center col-12 pb-3">
+                ВЫБЕРИ СВОЙ ПЛАН
+            </h1>
+
+            <div class="col-lg-1 d-none d-lg-block">
+
+            </div>
+
+            {% for item in gamepass %}
+            <div class="col-lg-2 col-md-4 col-sm-6 col-12 pb-3 pt-3">
+                <a href="#" title="{{ item.price }}₽">
+                    <img src="{{ item.image.url }}" class="img-fluid gp-item">
+                </a>
+            </div>
+            {% endfor %}
+
+            <div class="col-lg-1 d-none d-lg-block">
+
+            </div>
+
+            <h1 class="text-center col-12 pt-3 pb-3">
+                Откройте мир бесконечных возможностей с подпиской Xbox Game Pass!
+            </h1>
+        </div>
+    </div>
+</section>
+{% endblock %}

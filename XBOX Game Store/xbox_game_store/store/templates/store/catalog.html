@@ -29,7 +29,7 @@
             <h1>Каталог игр</h1>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-2 col-12">
+            <div class="col-lg-2 col-12 mb-5">
                 <h4 class="text-white">Фильтры</h4>
                 <div class="accordion" id="accordionPanelsStayOpenExample">
                     <div class="accordion-item">
@@ -92,8 +92,20 @@
                 </div>
             </div>
             <div class="col-lg-1 d-none d-lg-block"></div>
-            <div class="col-lg-8 col-12 d-flex justify-content-center align-items-start flex-column"
+            <div class="col-lg-8 col-12 d-flex align-items-start flex-column"
                 id="game-container">
+                <div class="xbox-gamepass d-flex mb-5 p-3">
+                    <a href="{% url 'gamepass' %}" class="d-flex">
+                        <img src="{% static 'img/gp-catalog.jpg'%}" class="img-fluid">
+                        <div class="d-flex flex-column">
+                            <h3 class="text-white">XBOX GAME PASS</h3>
+                            <br>
+                            <p class="text-white">Откройте мир бесконечных возможностей с подпиской Xbox Game Pass! Получите доступ к более чем 100 высококачественным играм для консоли и ПК. Исследуйте новинки, играйте в классические хиты и наслаждайтесь уникальными инди-играми. С Xbox Game Pass вы всегда будете в курсе последних релизов и сможете опробовать новые игры от известных разработчиков в день их выхода. Присоединяйтесь сегодня и откройте для себя лучший игровой опыт!</p>
+                            <br>
+                            <h5 class="text-white">Цена: от 950₽</h5>
+                        </div>
+                    </a>
+                </div>
                 {% for game in page_obj %}
                 <div class="d-flex mb-5 game-card p-3">
                     <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex">
@@ -101,7 +113,7 @@
                         <div class="d-flex flex-column">
                             <h3 class="text-white">{{ game.title }}</h3>
                             <br>
-                            <p class="text-white text-justify">{{ game.description|safe|truncatewords:50 }}</p>
+                            <p class="text-white">{{ game.description|safe|truncatewords:50 }}</p>
                             <br>
                             <h5 class="text-white">Цена: {{ game.price }}₽</h5>
                         </div>

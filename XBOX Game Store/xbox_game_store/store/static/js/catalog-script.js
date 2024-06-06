@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <br>
                                 <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
                                 <br>
-                                <h5 class="text-white">Цена: ${game.price}</h5>
+                                <h5 class="text-white">Цена: ${game.price}₽</h5>
                             </div>
                         </a>
                     `;
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <br>
                                     <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
                                     <br>
-                                    <h5 class="text-white">Цена: ${game.price}</h5>
+                                    <h5 class="text-white">Цена: ${game.price}₽</h5>
                                 </div>
                             </a>
                         `;

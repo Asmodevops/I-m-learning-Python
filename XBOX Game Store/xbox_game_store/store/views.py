@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView
 from store.forms import GameSearchForm
-from store.models import Game, CarouselItem, News, Genre, Feature
+from store.models import Game, CarouselItem, News, Genre, Feature, GamePass
 import random
 
 
@@ -28,8 +28,17 @@ class HomePage(TemplateView):
         'games': get_random_games(8),
         'carousel': CarouselItem.objects.all(),
         'news': News.objects.order_by('-id')[:2],
+        'gamepass': GamePass.objects.all(),
         'title': 'Главная страница',
         'current_page': 'homepage',
+    }
+
+class GamePassPage(TemplateView):
+    template_name = 'store/gamepass.html'
+    extra_context = {
+        'gamepass': GamePass.objects.all(),
+        'title': 'GAME PASS',
+        'current_page': 'catalog',
     }
 
 
@@ -61,6 +70,8 @@ def catalog(request):
     feature_filters = request.GET.getlist('feature')
     if feature_filters:
         games_list = games_list.filter(features__id__in=feature_filters).distinct()
+
+    games_list = games_list.order_by('title')
 
     paginator = Paginator(games_list, 10)
     page_number = request.GET.get('page')

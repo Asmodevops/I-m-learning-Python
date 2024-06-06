@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Game, Genre, Feature, CarouselItem, News
+from .models import Game, Genre, Feature, CarouselItem, News, GamePass
 
 
 @admin.register(Game)
@@ -21,3 +21,4 @@ class NewsAdmin(admin.ModelAdmin):
 
 admin.site.register(Genre)
 admin.site.register(Feature)
+admin.site.register(GamePass)
