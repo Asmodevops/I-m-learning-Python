@@ -9,6 +9,8 @@ urlpatterns = [
     path('', include('store.urls')),
     path('users/', include('users.urls', namespace="users")),
     path('feedback/', include('feedback.urls', namespace="feedback")),
+    path('orders/', include('orders.urls', namespace="orders")),
+    path('payment/', include('payment.urls', namespace="payment")),
 ]
 
 if settings.DEBUG:

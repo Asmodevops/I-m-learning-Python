@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load truncatechars %}
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/style-login.css' %}">
+<link rel="stylesheet" href="{% static 'css/style-profile.css' %}">
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
@@ -24,13 +25,90 @@
         </div>
         <h1 class="mt-5 text-white">{{ title }}</h1>
     </div>
+</section>
 
+<section class="section-three">
     <div class="container">
         <div class="row text-white">
-            <div class="col-12 xbox-auth d-flex flex-column align-items-center">
+            <div id="cart-detail" class="col-xl-8 col-12 table-responsive">
+                <h2 class="pb-4">Корзина <span><img src="{% static 'img/icon/cart2.png' %}" alt="" width="40"></span></h2>
+                {% if cart.items.exists %}
+                <table class="table table-dark">
+                    <thead>
+                        <tr class="table-active">
+                            <th>
+                                НАИМЕНОВАНИЕ
+                            </th>
+                            <th class="dnone">
+                                ЦЕНА
+                            </th>
+                            <th>
+                                КОЛИЧЕСТВО
+                            </th>
+                            <th class="dnone">
+                                СТОИМОСТЬ
+                            </th>
+                            <th class="dnone">
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart.items.all %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'game' item.product.id %}">
+                                    <img src="{{ item.product.banner_image.url }}" alt="{{ item.product.title }}" width="70" class="dnone">
+                                    <span class="game-title">{{ item.product.title|truncatechars:22 }}</span>
+                                </a>
+                            </td>
+                            <td class="dnone">
+                                {{ item.product.price }} ₽
+                            </td>
+                            <td>
+                                <a href="{% url 'orders:decrease' item.product.id %}" class="btn-container">
+                                    <button type="button" class="btn btn-dark">-</button>
+                                </a>
+                                <span class="quantity">{{ item.quantity }}</span>
+                                <a href="{% url 'orders:increase' item.product.id %}" class="btn-container">
+                                    <button type="button" class="btn btn-dark">+</button>
+                                </a>
+                            </td>
+                            <td class="dnone">
+                                {{ item.get_total_price }} ₽
+                            </td>
+                            <td class="dnone">
+                                <form action="{% url 'orders:remove_from_cart' item.product.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-close" aria-label="Удалить"></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="col d-flex flex-column justify-content-end align-items-start align-items-lg-end">
+                    <p class="small-text">Итого: <span class="big-text">{{ cart.get_total_price }}₽</span></p>
+                    <a href="{% url 'payment:cart_pay' cart.id %}" title="...">
+                        <button type="button" class="btn btn-success btn-lg">
+                            ОФОРМИТЬ
+                        </button>
+                    </a>
+                </div>
+
+                {% else %}
+                <h5 class="need-margin">Ваша корзина пока пуста 😞</h5>
+                <p class="need-margin">Предлагаем перейти в <a href="{% url 'catalog' %}">каталог</a> и ознакомиться с нашим списком игр. <br>Гарантируем, он не оставит вас без внимания!</p>
+                {% endif %}
+            </div>
+
+
+
+
+            <div class="col-xl-4 col-12 xbox-auth d-flex flex-column align-items-center">
                 <form method="post">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ next }}"/>
+                    <input type="hidden" name="next" value="{{ next }}" />
 
                     {% for field in form %}
                     <div class="form-group d-flex flex-column align-items-center mb-3">
@@ -47,39 +125,32 @@
                         {% endfor %}
                     </div>
                     {% endfor %}
-                </div>
-        </div>
-        <div class="row">
-            <div class="col-12 xbox-auth d-flex flex-column align-items-center">
                     {% if form.non_field_errors %}
-                        <p class="mt-2 text-red">
-                            {% for error in form.non_field_errors %}
-                                {{ error }}
-                            {% endfor %}
-                        </p>
-                    {% endif %}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 xbox-auth d-flex flex-column align-items-center mb-4">
-                    <div class="form-group text-center mt-4">
-                        <button type="submit" class="buy-btn btn btn-success btn-lg">Изменить</button>
-                    </div>
-                    <div class="form-group text-center mt-4">
-                        <a href="{% url 'users:password_change' %}"><p>Сменить пароль<p></a>
-                    </div>
+                <p class="mt-2 text-red">
+                    {% for error in form.non_field_errors %}
+                    {{ error }}
+                    {% endfor %}
+                </p>
+                {% endif %}
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="buy-btn btn btn-success btn-lg">Изменить</button>
+                </div>
+                <div class="form-group text-center mt-4">
+                    <a href="{% url 'users:password_change' %}">
+                        <p>Сменить пароль<p>
+                    </a>
+                </div>
                 </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 xbox-auth d-flex flex-column align-items-center mb-4">
-                    <div class="form-group text-center mt-4">
-                        <a href="{% url 'users:logout' %}"><button type="submit" class="buy-btn btn btn-success btn-lg">Выйти из профиля</button></a>
-                    </div>
-                </form>
+                <div class="form-group text-center mt-4">
+                    <a href="{% url 'users:logout' %}"><button type="submit"
+                            class="buy-btn btn btn-success btn-lg">Выйти из профиля</button></a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 {% endblock %}

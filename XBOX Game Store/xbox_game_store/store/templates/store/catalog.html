@@ -95,9 +95,9 @@
             <div class="col-lg-8 col-12 d-flex align-items-start flex-column"
                 id="game-container">
                 <div class="xbox-gamepass d-flex mb-5 p-3">
-                    <a href="{% url 'gamepass' %}" class="d-flex">
-                        <img src="{% static 'img/gp-catalog.jpg'%}" class="img-fluid">
-                        <div class="d-flex flex-column">
+                    <a href="{% url 'gamepass' %}" class="d-flex flex-column flex-sm-row img-fluid">
+                        <img src="{% static 'img/gp-catalog.jpg'%}" class="rounded mx-auto d-block">
+                        <div class="d-flex flex-column need-margin">
                             <h3 class="text-white">XBOX GAME PASS</h3>
                             <br>
                             <p class="text-white">Откройте мир бесконечных возможностей с подпиской Xbox Game Pass! Получите доступ к более чем 100 высококачественным играм для консоли и ПК. Исследуйте новинки, играйте в классические хиты и наслаждайтесь уникальными инди-играми. С Xbox Game Pass вы всегда будете в курсе последних релизов и сможете опробовать новые игры от известных разработчиков в день их выхода. Присоединяйтесь сегодня и откройте для себя лучший игровой опыт!</p>
@@ -108,9 +108,9 @@
                 </div>
                 {% for game in page_obj %}
                 <div class="d-flex mb-5 game-card p-3">
-                    <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex">
-                        <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
-                        <div class="d-flex flex-column">
+                    <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex flex-column flex-sm-row">
+                        <img src="{{ game.banner_image.url }}" class="rounded mx-auto d-block" alt="{{ game.title }}">
+                        <div class="d-flex flex-column need-margin">
                             <h3 class="text-white">{{ game.title }}</h3>
                             <br>
                             <p class="text-white">{{ game.description|safe|truncatewords:50 }}</p>

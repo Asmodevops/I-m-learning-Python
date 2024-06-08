@@ -9,7 +9,7 @@
 
 .login-button{
     background-color: #09A13E;
-    font-size: 16pt;
+    font-size: 13pt;
     padding: 8px 20px;
     border-radius: 50px;
     text-decoration: none;
@@ -97,4 +97,8 @@
 
 .offcanvas{
     background-color: #1D1F22;
+}
+
+.bg-warning{
+    margin-left: 12px;
 }

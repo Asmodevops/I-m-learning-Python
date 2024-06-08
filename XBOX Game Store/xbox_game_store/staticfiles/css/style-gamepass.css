@@ -1,0 +1,62 @@
+.section-two{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+    content: '>';
+}
+
+.breadcrumb-item a {
+    color: white;
+    transition: 0.3s color;
+}
+
+.breadcrumb-item a:hover {
+    color: #98ffbc;
+}
+
+.breadcrumb-item.active {
+    color: #09eb58;
+}
+
+.section-three, .section-five{
+    background-color: #16181b;
+}
+
+.gp-icon{
+    max-width: 270px;
+}
+
+.gp-header{
+    font-size: 42pt;
+    font-weight: 600;
+}
+
+.gp-small-icon{
+    max-height: 55px;
+}
+
+.row-gp-1 p{
+    text-align: justify;
+}
+
+.section-four, .section-six{
+    background-color: #101113;
+}
+
+.gp-item{
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.gp-item:hover{
+    transform: scale(1.05);
+}

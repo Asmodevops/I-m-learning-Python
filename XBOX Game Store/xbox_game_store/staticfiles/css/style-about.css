@@ -1,0 +1,54 @@
+.section-two{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+    content: '>';
+}
+
+.breadcrumb-item a {
+    color: white;
+    transition: 0.3s color;
+}
+
+.breadcrumb-item a:hover {
+    color: #98ffbc;
+}
+
+.breadcrumb-item.active {
+    color: #09eb58;
+}
+
+.section-three{
+    background-color: #16181b;
+}
+
+.section-four{
+    background-color: #101113;
+}
+
+.about-xbox-block{
+    padding: 30px;
+}
+
+.about-xbox-img{
+    display: flex;
+    justify-content: end;
+}
+
+.about-xbox-img img{
+    max-height: 500px;
+}
+
+.about-checkmark{
+    width: 40px;
+}
+

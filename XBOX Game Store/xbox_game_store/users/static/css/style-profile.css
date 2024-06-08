@@ -1,0 +1,136 @@
+.section-two, .section-three{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+    content: '>';
+}
+
+.breadcrumb-item a {
+    color: white;
+    transition: 0.3s color;
+}
+
+.breadcrumb-item a:hover {
+    color: #98ffbc;
+}
+
+.breadcrumb-item.active {
+    color: #09eb58;
+}
+
+
+.btn-success{
+    background-color: #09A13E;
+    width: 240px;
+}
+
+.btn-success:hover{
+    background-color: #04772c;
+}
+
+.form-group{
+    font-size: 14pt;
+}
+
+.form-input{
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    width: 380px;
+}
+
+.register-done-section{
+    height: 50vh;
+}
+
+.text-red{
+    color: red;
+}
+
+.section-three .container{
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+
+
+td a{
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #16181b;
+}
+
+th, td {
+    text-align: center;
+}
+
+.section-three h2:nth-child(1), .need-margin{
+    margin-left: 5px;
+}
+
+th:nth-child(1), td:nth-child(1){
+    text-align: left;
+}
+
+.btn-container {
+    margin: 0 5px;
+}
+
+.table>:not(caption)>*>*{
+    background-color: #16181b;
+}
+
+tbody, td, tfoot, th, thead, tr{
+    border: none;
+}
+
+.btn-close{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+
+td{
+    vertical-align: middle;
+}
+
+
+@media(max-width: 767px){
+    .dnone{
+        display: none;
+    }
+}
+
+@media(min-width: 768px){
+    .game-title{
+        margin-left: 15px;
+    }
+}
+
+.big-text{
+    font-size: 22pt;
+}
+
+.small-text{
+    font-size: 16pt;
+    margin-right: 20px;
+}
+
+@media(max-width: 767px){
+    .xbox-auth{
+        margin-top: 40px;
+    }
+}

@@ -116,7 +116,7 @@
 
             {% for item in gamepass %}
             <div class="col-lg-2 col-md-4 col-sm-6 col-12 pb-3 pt-3">
-                <a href="#" title="{{ item.price }}₽">
+                <a href="{% url 'payment:gamepass' item.id %}" title="{{ item.price }}₽">
                     <img src="{{ item.image.url }}" class="img-fluid gp-item">
                 </a>
             </div>

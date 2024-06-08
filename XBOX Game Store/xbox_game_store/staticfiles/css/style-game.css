@@ -1,0 +1,128 @@
+.section-two {
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+@media (max-width: 767px){
+    .section-two{
+        padding: 0;
+    }
+}
+
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: white;
+    content: '>';
+}
+
+.breadcrumb-item a {
+    color: white;
+    transition: 0.3s color;
+}
+
+.breadcrumb-item a:hover {
+    color: #98ffbc;
+}
+
+.breadcrumb-item.active {
+    color: #09eb58;
+}
+
+.xbox-game-banner{
+    display: flex;
+    justify-content: end;
+}
+
+@media (max-width: 767px){
+    .xbox-game-banner{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 30px;
+    }
+}
+
+
+.game-banner {
+    max-height: 265px;
+}
+
+.game-description {
+    overflow: hidden;
+    max-height: 145px;
+    position: relative;
+    transition: max-height 0.9s ease;
+}
+
+.blck-game-description {
+    text-align: justify;
+    transition: width 0.9s ease;
+}
+
+.game-description.expanded {
+    max-height: 100%;
+}
+
+.btn-expand {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    outline: none;
+    display: block;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.btn-expand.d-none {
+    display: none;
+}
+
+.xbox-buy-div{
+    margin-left: 20px;
+}
+
+.btn-success{
+    background-color: #09A13E;
+}
+
+.btn-success:hover{
+    background-color: #04772c;
+}
+
+.genre-text{
+    color: #707070;
+}
+
+.section-three{
+    background-color: #101113;
+}
+
+.section-three .container{
+    padding-top: 20px;
+}
+
+.section-three .container .row{
+    padding: 0 0 30px 0;
+}
+
+.section-three .container .row img{
+    max-height: 265px;
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+.section-three .container .row img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 991px){
+    .section-three .container .row img{
+        margin-top: 30px;
+    }
+}

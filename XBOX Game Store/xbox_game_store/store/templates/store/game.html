@@ -60,13 +60,12 @@
                 <br>
                 <div class="d-flex align-items-center">
                     <h3 class="text-white">Цена: {{ game.price }}₽</h3>
-                    <br>
-                    <div class="xbox-buy-div">
-                        <a href="#" title="...">
-                            <button type="button" class="buy-btn btn btn-success btn-lg">
-                                КУПИТЬ
-                            </button>
-                        </a>
+                    <div class="xbox-buy-div pb-2">
+                        <form action="{% url 'orders:add_to_cart' game.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.path }}">
+                            <button type="submit" class="buy-btn btn btn-success btn-lg">В КОРЗИНУ</button>
+                        </form>
                     </div>
                 </div>
             </div>

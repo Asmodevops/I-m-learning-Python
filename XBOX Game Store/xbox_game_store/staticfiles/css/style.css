@@ -1,0 +1,164 @@
+.section-two, .section-four{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+}
+
+.xbox-card a img {
+    object-fit: cover;
+    transition: transform 0.2s ease-in-out;
+}
+
+.xbox-card a img:hover {
+    transform: scale(1.05);
+}
+
+.xbox-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 1399px){
+    .xbox-card{
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .xbox-card {
+        flex-direction: row;
+    }
+
+    .xbox-card .row {
+        width: 48%;
+        padding: 1%;
+    }
+}
+
+.xbox-card .row {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.xbox-card .row .col-md-3,
+.xbox-card .row .col-6 {
+    flex: 1 1 25%;
+    max-width: 25%;
+    padding: 5px;
+}
+
+
+.xbox-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (min-width: 1400px){
+    .xbox-card img {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+    }
+}
+
+
+@media (max-width: 1199px) {
+    .xbox-card .row .col-md-3,
+    .xbox-card .row .col-6 {
+        flex: 1 1 25%;
+        max-width: 25%;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .xbox-card .row .col-md-3,
+    .xbox-card .row .col-6 {
+        flex: 1 1 50%;
+        max-width: 50%;
+    }
+}
+
+.section-three, .section-five{
+    background-color: #101113;
+}
+
+.section-three .container{
+    max-width: none;
+    padding: 30px 30px;
+}
+
+.gamepass img, .section-four img, .section-five img{
+    max-width: 100%;
+}
+
+@media (max-width: 1399px){
+    .gamepass img{
+        margin-top: 30px;
+    }
+}
+
+.buy-btn{
+    width: 200px;
+    background-color: #09A13E;
+    transition: 0.3s background-color;
+}
+
+.buy-btn:hover{
+    background-color: #04772c;
+}
+@media (max-width: 1399px){
+    .xbox-buy-div{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+.section-four .container, .section-five .container{
+    max-width: none;
+    padding: 30px 30px 0 30px;
+}
+
+.section-four .container p{
+    text-align: justify;
+}
+@media (max-width: 1199px){
+    .section-four .news-text{
+        margin-top: 30px;
+    }
+}
+
+
+.section-five .container p{
+    text-align: justify;
+}
+
+.news-png-img{
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.carousel-caption h5{
+    font-family: Arial;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 16pt;
+    font-weight: bold;
+    width: max-content;
+    padding: 10px;
+    left: 25%;
+    transform: translateX(-25%);
+    border-radius: 15px;
+    -webkit-text-stroke: 0.2px #000;
+    text-stroke: 0.2px #000;
+    text-shadow: 1.5px 2.5px 3px #000;
+}
