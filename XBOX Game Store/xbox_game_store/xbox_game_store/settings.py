@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-#%9(5#@9d##3ihvju-q%%v&@v5+%a$kpgrr4^c5v1ygx--d46m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'bead-185-13-176-135.ngrok-free.app']
 
+CSRF_TRUSTED_ORIGINS = ['https://bead-185-13-176-135.ngrok-free.app']
 
 # Application definition
 
@@ -52,7 +53,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'xbox_game_store.urls'
@@ -60,9 +60,7 @@ ROOT_URLCONF = 'xbox_game_store.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'templates',
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

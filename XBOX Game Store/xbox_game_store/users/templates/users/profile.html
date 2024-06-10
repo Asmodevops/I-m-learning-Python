@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load truncatechars %}
+{% load class_name %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style-profile.css' %}">
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
@@ -99,6 +100,54 @@
                 {% else %}
                 <h5 class="need-margin">Ваша корзина пока пуста 😞</h5>
                 <p class="need-margin">Предлагаем перейти в <a href="{% url 'catalog' %}">каталог</a> и ознакомиться с нашим списком игр. <br>Гарантируем, он не оставит вас без внимания!</p>
+                {% endif %}
+
+
+                {% if purchases.exists %}
+                <h2 class="pt-5">Ваши покупки ({{ purchases.count }}):</h2>
+                {% for purchase in purchases %}
+                <hr>
+                <table class="table table-dark caption-top purchase">
+                    <caption class="text-white small-text">{{ purchase.created_at }}. Сумма покупки: <span class="big-text">{{ purchase.get_total_price }}₽</span></caption>
+                    <thead>
+                        <tr class="table-active">
+                            <th width="100">
+                                НАИМЕНОВАНИЕ
+                            </th>
+                            <th class="dnone" width="100">
+                                ЦЕНА
+                            </th>
+                            <th width="100">
+                                КОЛИЧЕСТВО
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in purchase.items.all %}
+                        <tr>
+                            <td>
+                                {% if item.content_object|class_name == 'Game' %}
+                                <a href="{% url 'game' item.content_object.id %}">
+                                    <span class="game-title">{{ item.content_object.title|truncatechars:30 }}</span>
+                                </a>
+                                {% elif item.content_object|class_name == 'GamePass' %}
+                                <a href="{% url 'gamepass' %}">
+                                    <span class="game-title">Game Pass {{ item.content_object.title|truncatechars:30 }}</span>
+                                </a>
+                                {% endif %}
+                            </td>
+                            <td class="dnone">
+                                {{ item.content_object.price }}₽
+                            </td>
+                            <td>
+                                {{ item.quantity }} шт.
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endfor %}
+                <hr>
                 {% endif %}
             </div>
 

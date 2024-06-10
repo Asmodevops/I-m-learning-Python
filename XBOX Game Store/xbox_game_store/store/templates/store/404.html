@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style-404.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'store/includes/navbar.html' %}
+
+<section class="section-one">
+    <div class="container d-flex align-items-end justify-content-center fs-1 text-white flex-column">
+
+        <div class="col-4">
+            <h1>Ты идешь не в том направлении!</h3>
+            <p>Страница не найдена.</p>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}

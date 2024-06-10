@@ -8,5 +8,5 @@ app_name = 'payment'
 urlpatterns = [
     path('gamepass/<int:object_id>/', views.gamepass_pay, name='gamepass'),
     path('cart_pay/<int:cart_id>/', views.cart_pay, name='cart_pay'),
-    # path('webhook/', views.yookassa_webhook, name='yookassa_webhook'),
+    path('webhook/', views.webhook, name='webhook'),
 ]

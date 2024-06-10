@@ -36,8 +36,13 @@
     padding: 5px;
 }
 
+:root {
+    --bs-border-radius: 0;
+}
+
 .game-card img{
     max-height: 250px;
+    border-radius: var(--bs-border-radius);
 }
 
 .game-card p{

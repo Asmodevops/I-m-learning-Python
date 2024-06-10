@@ -17,7 +17,11 @@ def add_to_cart(request, product_id):
 
     next_page = request.POST.get('next', None)
 
-    return redirect(next_page)
+    if next_page is not None:
+        return redirect(next_page)
+    else:
+        return redirect('users:profile')
+
 
 
 

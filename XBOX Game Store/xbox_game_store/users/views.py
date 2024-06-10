@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
-from orders.models import Cart
+from orders.models import Cart, Purchase
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, UserPasswordChangeForm
 
 
@@ -43,7 +43,9 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         cart = get_object_or_404(Cart, user=self.request.user)
+        purchases = Purchase.objects.filter(user=self.request.user)
         context['cart'] = cart
+        context['purchases'] = purchases
         return context
 
 class UserPasswordChange(PasswordChangeView):

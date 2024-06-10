@@ -176,3 +176,7 @@ class ShowGame(ListView):
         context['current_page'] = 'catalog'
         context['title'] = self.game.title
         return context
+
+
+def error_404(request, exception):
+    return render(request, 'store/404.html', status=404)
