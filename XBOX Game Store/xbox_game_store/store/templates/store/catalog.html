@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'store/includes/navbar.html' %}
+{% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container">
@@ -95,7 +95,7 @@
             <div class="col-lg-8 col-12 d-flex align-items-start flex-column"
                 id="game-container">
                 <div class="xbox-gamepass d-flex mb-5 p-3">
-                    <a href="{% url 'gamepass' %}" class="d-flex flex-column flex-sm-row img-fluid">
+                    <a href="{% url 'store:gamepass' %}" class="d-flex flex-column flex-sm-row img-fluid">
                         <img src="{% static 'img/gp-catalog.jpg'%}" class="rounded mx-auto d-block">
                         <div class="d-flex flex-column need-margin">
                             <h3 class="text-white">XBOX GAME PASS</h3>
@@ -108,7 +108,7 @@
                 </div>
                 {% for game in page_obj %}
                 <div class="d-flex mb-5 game-card p-3">
-                    <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex flex-column flex-sm-row">
+                    <a href="{% url 'store:game' game.id %}" title="{{ game.title }}" class="d-flex flex-column flex-sm-row">
                         <img src="{{ game.banner_image.url }}" class="rounded mx-auto d-block" alt="{{ game.title }}">
                         <div class="d-flex flex-column need-margin">
                             <h3 class="text-white">{{ game.title }}</h3>

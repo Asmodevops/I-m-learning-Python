@@ -2,10 +2,8 @@ from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView
-
 from orders.models import Cart, Purchase
 from users.forms import LoginUserForm, RegisterUserForm, ProfileUserForm, UserPasswordChangeForm
 
@@ -51,6 +49,7 @@ class ProfileUser(LoginRequiredMixin, UpdateView):
         context['cart'] = cart
         context['purchases'] = purchases
         return context
+
 
 class UserPasswordChange(PasswordChangeView):
     form_class = UserPasswordChangeForm

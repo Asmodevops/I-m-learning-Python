@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'store/includes/navbar.html' %}
+{% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container">
@@ -14,11 +14,11 @@
 
 <section class="section-two">
     <div class="container">
-        <div class="row mb-5">
+        <div class="row mb-5 d-none d-lg-block">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'catalog' %}">Каталог</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'store:catalog' %}">Каталог</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ title }}</li>
                 </ol>
             </nav>

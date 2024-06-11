@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'store/includes/navbar.html' %}
+{% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container">
@@ -45,7 +45,7 @@
                     <ul>
                         {% for game in results %}
                         <div class="d-flex mb-5 game-card p-3">
-                            <a href="{% url 'game' game.id %}" title="{{ game.title }}" class="d-flex flex-column flex-sm-row">
+                            <a href="{% url 'store:game' game.id %}" title="{{ game.title }}" class="d-flex flex-column flex-sm-row">
                                 <img src="{{ game.banner_image.url }}" class="rounded mx-auto d-block" alt="{{ game.title }}">
                                 <div class="d-flex flex-column need-margin">
                                     <h3 class="text-white">{{ game.title }}</h3>
@@ -69,7 +69,7 @@
                 <div class="row pt-4 pb-5">
                     {% for game in games %}
                     <div class="col-lg-2 col-md-4 col-6 xbox">
-                        <a href="{% url 'game' game.id  %}" title="{{ game.title }}">
+                        <a href="{% url 'store:game' game.id  %}" title="{{ game.title }}">
                             <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
                         </a>
                     </div>

@@ -1,8 +1,5 @@
 import random
-
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-
 from feedback.forms import FeedbackForm
 from feedback.models import Feedback
 

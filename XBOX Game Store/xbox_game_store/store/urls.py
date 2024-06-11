@@ -3,16 +3,14 @@ from django.conf.urls.static import static
 from django.urls import path
 from store import views
 
+
+app_name = 'store'
+
 urlpatterns = [
-    path('', views.HomePage.as_view(), name='homepage'),
-    path('about/', views.AboutPage.as_view(), name='about'),
-    path('agreement/', views.agreement, name='agreement'),
-    path('privacy/', views.privacy, name='privacy'),
-    path('catalog/', views.catalog, name='catalog'),
+    path('', views.catalog, name='catalog'),
     path('gamepass/', views.GamePassPage.as_view(), name='gamepass'),
     path('search/', views.game_search, name='search'),
-    path('personal-data/', views.personal_data, name='personal-data'),
-    path('catalog/game/<int:game_id>/', views.ShowGame.as_view(), name='game'),
+    path('game/<int:game_id>/', views.ShowGame.as_view(), name='game'),
 ]
 
 if settings.DEBUG:

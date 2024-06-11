@@ -29,9 +29,9 @@ SECRET_KEY = 'django-insecure-#%9(5#@9d##3ihvju-q%%v&@v5+%a$kpgrr4^c5v1ygx--d46m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'af70-185-13-176-72.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', '0d6b-185-13-178-246.ngrok-free.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://af70-185-13-176-72.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://0d6b-185-13-178-246.ngrok-free.app']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'main.apps.MainConfig',
     'store.apps.StoreConfig',
     'users.apps.UsersConfig',
     'feedback.apps.FeedbackConfig',
@@ -129,6 +130,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, './main/static'),
     os.path.join(BASE_DIR, './store/static'),
     os.path.join(BASE_DIR, './users/static'),
     os.path.join(BASE_DIR, './feedback/static'),

@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-main.css' %}">
 {% endblock %}
 {% block content %}
-    {% include 'store/includes/navbar.html' %}
+    {% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container d-flex align-items-center justify-content-center fs-1 text-white flex-column">
@@ -24,7 +24,7 @@
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="row g-0">
                                 <div class="col-8 position-relative">
-                                    <a href="{% url 'game' item.game1.id %}"><img src="{{ item.big_image.url }}"
+                                    <a href="{% url 'store:game' item.game1.id %}"><img src="{{ item.big_image.url }}"
                                             class="d-block h-100 object-fit-cover w-auto img-fluid" alt="..."></a>
                                     <div class="carousel-caption d-none d-lg-block text-center position-absolute bottom-0 start-50 translate-middle-x text-white">
                                         <h5>{{ item.caption }}</h5>
@@ -32,12 +32,12 @@
                                 </div>
                                 <div class="col-4 d-flex flex-column">
                                     <div class="flex-fill">
-                                        <a href="{% url 'game' item.game2.id %}"><img src="{{ item.small_image2.url }}"
+                                        <a href="{% url 'store:game' item.game2.id %}"><img src="{{ item.small_image2.url }}"
                                                 class="d-block h-100 object-fit-cover w-auto img-fluid"
                                                 alt="..."></a>
                                     </div>
                                     <div class="flex-fill">
-                                        <a href="{% url 'game' item.game3.id %}"><img src="{{ item.small_image3.url }}"
+                                        <a href="{% url 'store:game' item.game3.id %}"><img src="{{ item.small_image3.url }}"
                                                 class="d-block h-100 object-fit-cover w-auto img-fluid"
                                                 alt="..."></a>
                                     </div>
@@ -61,44 +61,44 @@
             <div class="xbox-card col-xxl-4 col-xl-12 d-flex">
                 <div class="row col-xxl-12 col-xl-6">
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.0.id  %}" title="{{ games.0.title }}">
+                        <a href="{% url 'store:game' games.0.id  %}" title="{{ games.0.title }}">
                             <img src="{{ games.0.banner_image.url }}" class="img-fluid" alt="{{ games.0.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.1.id  %}" title="{{ games.1.title }}">
+                        <a href="{% url 'store:game' games.1.id  %}" title="{{ games.1.title }}">
                             <img src="{{ games.1.banner_image.url }}" class="img-fluid" alt="{{ games.1.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.2.id  %}" title="{{ games.2.title }}">
+                        <a href="{% url 'store:game' games.2.id  %}" title="{{ games.2.title }}">
                             <img src="{{ games.2.banner_image.url }}" class="img-fluid" alt="{{ games.2.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.3.id  %}" title="{{ games.3.title }}">
+                        <a href="{% url 'store:game' games.3.id  %}" title="{{ games.3.title }}">
                             <img src="{{ games.3.banner_image.url }}" class="img-fluid" alt="{{ games.3.title }}">
                         </a>
                     </div>
                 </div>
                 <div class="row col-xxl-12 col-xl-6">
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.4.id  %}" title="{{ games.4.title }}">
+                        <a href="{% url 'store:game' games.4.id  %}" title="{{ games.4.title }}">
                             <img src="{{ games.4.banner_image.url }}" class="img-fluid" alt="{{ games.4.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.5.id  %}" title="{{ games.5.title }}">
+                        <a href="{% url 'store:game' games.5.id  %}" title="{{ games.5.title }}">
                             <img src="{{ games.5.banner_image.url }}" class="img-fluid" alt="{{ games.5.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.6.id  %}" title="{{ games.6.title }}">
+                        <a href="{% url 'store:game' games.6.id  %}" title="{{ games.6.title }}">
                             <img src="{{ games.6.banner_image.url }}" class="img-fluid" alt="{{ games.6.title }}">
                         </a>
                     </div>
                     <div class="col-md-3 col-6">
-                        <a href="{% url 'game' games.7.id  %}" title="{{ games.7.title }}">
+                        <a href="{% url 'store:game' games.7.id  %}" title="{{ games.7.title }}">
                             <img src="{{ games.7.banner_image.url }}" class="img-fluid" alt="{{ games.7.title }}">
                         </a>
                     </div>
@@ -139,7 +139,7 @@
                     ПРИОБРЕТИ ПОДПИСКУ XBOX GAME PASS И ПОЛУЧИ ДОСТУП К СОТНЕ ВЫСОКОКАЧЕСТВЕННЫХ ИГР
                 </p>
                 <div class="xbox-buy-div">
-                    <a href="{% url 'gamepass' %}" title="...">
+                    <a href="{% url 'store:gamepass' %}" title="...">
                         <button type="button" class="buy-btn btn btn-success btn-lg">
                             КУПИТЬ
                         </button>
@@ -194,7 +194,7 @@
                     {{ news.1.content|safe }}
                 </p>
             </div>
-            <div class="col-xl-6 col-lg-12">
+            <div class="col-xl-6 col-lg-12 pb-5">
                 <div class="news-img">
                     <img src="{{ news.1.image.url }}" alt="" class="img-fluid">
                 </div>

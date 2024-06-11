@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'store/includes/navbar.html' %}
+{% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container">
@@ -18,7 +18,7 @@
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'homepage' %}">Главная</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'catalog' %}">Каталог</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'store:catalog' %}">Каталог</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ game.title }}</li>
                 </ol>
             </nav>
@@ -81,7 +81,7 @@
         <div class="row">
             {% for game in games %}
             <div class="col-lg-2 col-md-4 col-6 xbox">
-                <a href="{% url 'game' game.id  %}" title="{{ game.title }}">
+                <a href="{% url 'store:game' game.id  %}" title="{{ game.title }}">
                     <img src="{{ game.banner_image.url }}" class="img-fluid" alt="{{ game.title }}">
                 </a>
             </div>

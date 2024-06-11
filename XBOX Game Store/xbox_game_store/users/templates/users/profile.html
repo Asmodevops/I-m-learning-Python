@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{% static 'css/style-navbar-other.css' %}">
 {% endblock %}
 {% block content %}
-{% include 'store/includes/navbar.html' %}
+{% include 'main/includes/navbar.html' %}
 
 <section class="section-one">
     <div class="container">
@@ -58,7 +58,7 @@
                         {% for item in cart.items.all %}
                         <tr>
                             <td>
-                                <a href="{% url 'game' item.product.id %}">
+                                <a href="{% url 'store:game' item.product.id %}">
                                     <img src="{{ item.product.banner_image.url }}" alt="{{ item.product.title }}" width="70" class="dnone">
                                     <span class="game-title">{{ item.product.title|truncatechars:22 }}</span>
                                 </a>
@@ -99,7 +99,7 @@
 
                 {% else %}
                 <h5 class="need-margin">Ваша корзина пока пуста 😞</h5>
-                <p class="need-margin">Предлагаем перейти в <a href="{% url 'catalog' %}">каталог</a> и ознакомиться с нашим списком игр. <br>Гарантируем, он не оставит вас без внимания!</p>
+                <p class="need-margin">Предлагаем перейти в <a href="{% url 'store:catalog' %}">каталог</a> и ознакомиться с нашим списком игр. <br>Гарантируем, он не оставит вас без внимания!</p>
                 {% endif %}
 
 
@@ -127,11 +127,11 @@
                         <tr>
                             <td>
                                 {% if item.content_object|class_name == 'Game' %}
-                                <a href="{% url 'game' item.content_object.id %}">
+                                <a href="{% url 'store:game' item.content_object.id %}">
                                     <span class="game-title">{{ item.content_object.title|truncatechars:30 }}</span>
                                 </a>
                                 {% elif item.content_object|class_name == 'GamePass' %}
-                                <a href="{% url 'gamepass' %}">
+                                <a href="{% url 'store:gamepass' %}">
                                     <span class="game-title">Game Pass {{ item.content_object.title|truncatechars:30 }}</span>
                                 </a>
                                 {% endif %}

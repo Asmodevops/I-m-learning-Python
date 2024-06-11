@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
-
 from orders.models import Cart, CartItem
 from store.models import Game
 
@@ -21,8 +20,6 @@ def add_to_cart(request, product_id):
         return redirect(next_page)
     else:
         return redirect('users:profile')
-
-
 
 
 @login_required

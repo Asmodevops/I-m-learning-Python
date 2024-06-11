@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from orders.models import PurchaseItem, Purchase
 
 
@@ -11,6 +10,7 @@ class PurchaseItemInline(admin.TabularInline):
     def get_item_title(self, obj):
         return str(obj.content_object)
     get_item_title.short_description = 'Item Title'
+
 
 class PurchaseAdmin(admin.ModelAdmin):
     list_display = ('user', 'created_at', 'get_total_price')

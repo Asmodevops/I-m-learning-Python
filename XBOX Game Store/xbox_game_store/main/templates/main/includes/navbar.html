@@ -1,6 +1,5 @@
 {% load static %}
 
-<!-- НАВИГАЦИЯ НАЧАЛО -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
             <img src="{% static 'img/logo.png' %}" class="navbar-brand me-auto img-fluid" alt="" width="180">
@@ -16,7 +15,7 @@
                             <a class="nav-link mx-lg-2 {% if current_page == 'homepage' %}active{% endif %}" aria-current="page" href="{% url 'homepage' %}">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 {% if current_page == 'catalog' %}active{% endif %}" href="{% url 'catalog' %}">Каталог</a>
+                            <a class="nav-link mx-lg-2 {% if current_page == 'catalog' %}active{% endif %}" href="{% url 'store:catalog' %}">Каталог</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2 {% if current_page == 'about' %}active{% endif %}" href="{% url 'about' %}">Гарантии</a>
@@ -25,7 +24,7 @@
                             <a class="nav-link mx-lg-2 {% if current_page == 'feedback' %}active{% endif %}" href="{% url 'feedback:main' %}">Отзывы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2 {% if current_page == 'search' %}active{% endif %}" href="{% url 'search' %}"><img src="{% static 'img/magnifier.png' %}" alt="" width="20">Поиск игр</a>
+                            <a class="nav-link mx-lg-2 {% if current_page == 'search' %}active{% endif %}" href="{% url 'store:search' %}"><img src="{% static 'img/magnifier.png' %}" alt="" width="20">Поиск игр</a>
                         </li>
                     </ul>
                 </div>
@@ -51,4 +50,3 @@
             </button>
         </div>
     </nav>
-<!-- НАВИГАЦИЯ КОНЕЦ -->

@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView
 from store.forms import GameSearchForm
-from store.models import Game, CarouselItem, News, Genre, Feature, GamePass
+from store.models import Game, Genre, Feature, GamePass
 import random
 
 
@@ -21,17 +21,6 @@ def get_random_games(count: int):
         games = Game.objects.filter(id__in=game_ids)
     return games
 
-
-class HomePage(TemplateView):
-    template_name = 'store/index.html'
-    extra_context = {
-        'games': get_random_games(8),
-        'carousel': CarouselItem.objects.all(),
-        'news': News.objects.order_by('-id')[:2],
-        'gamepass': GamePass.objects.all(),
-        'title': 'Главная страница',
-        'current_page': 'homepage',
-    }
 
 class GamePassPage(TemplateView):
     template_name = 'store/gamepass.html'
@@ -102,35 +91,6 @@ def catalog(request):
     return render(request, 'store/catalog.html', context=data)
 
 
-class AboutPage(TemplateView):
-    template_name = 'store/about.html'
-    extra_context = {
-        'title': 'Гарантии',
-        'current_page': 'about',
-    }
-
-
-def agreement(request):
-    data = {
-        'title': 'Пользовательское соглашение'
-    }
-    return render(request, 'store/agreement.html', data)
-
-
-def privacy(request):
-    data = {
-        'title': 'Политика конфиденциальности'
-    }
-    return render(request, 'store/privacy.html', data)
-
-
-def personal_data(request):
-    data = {
-        'title': 'Согласие на обработку персональных данных'
-    }
-    return render(request, 'store/personal-data.html', data)
-
-
 def game_search(request):
     games = get_random_games(6)
     query = ""
@@ -176,7 +136,3 @@ class ShowGame(ListView):
         context['current_page'] = 'catalog'
         context['title'] = self.game.title
         return context
-
-
-def error_404(request, exception):
-    return render(request, 'store/404.html', status=404)

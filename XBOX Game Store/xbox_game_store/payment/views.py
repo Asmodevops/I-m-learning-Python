@@ -1,13 +1,12 @@
 import uuid
 import json
-
 import requests
+import os
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponse
 from django.shortcuts import redirect, get_object_or_404, render
-import os
 from django.views.decorators.csrf import csrf_exempt
 from dotenv import load_dotenv
 from yookassa import Payment, Configuration
@@ -17,7 +16,6 @@ from store.models import GamePass
 
 
 load_dotenv()
-
 Configuration.account_id = os.getenv('SHOP_ID')
 Configuration.secret_key = os.getenv('SECRET_KEY')
 
@@ -32,7 +30,7 @@ def create_payment(price, title, meta):
         "confirmation": {
             "type": "redirect",
             # "return_url": "http://127.0.0.1:8000/"
-            "return_url": "https://af70-185-13-176-72.ngrok-free.app/payment/payment_complete/"
+            "return_url": "https://0d6b-185-13-178-246.ngrok-free.app/payment/payment_complete/"
         },
         "capture": True,
         "description": title,
