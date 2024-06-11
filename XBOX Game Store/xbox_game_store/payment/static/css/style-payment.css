@@ -1,0 +1,12 @@
+.section-two{
+    background-color: #16181b;
+}
+
+.section-two .container {
+    height: 60vh;
+}
+
+.payment-complete{
+    font-size: 14pt;
+    height: 100%;
+}

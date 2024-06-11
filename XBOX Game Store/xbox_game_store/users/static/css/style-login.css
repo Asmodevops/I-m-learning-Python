@@ -41,7 +41,7 @@
     font-size: 14pt;
 }
 
-.form-input{
+.form-input, .xbox-auth form input{
     border-radius: 15px;
     padding: 5px 10px 5px 10px;
     width: 380px;

@@ -9,4 +9,5 @@ urlpatterns = [
     path('gamepass/<int:object_id>/', views.gamepass_pay, name='gamepass'),
     path('cart_pay/<int:cart_id>/', views.cart_pay, name='cart_pay'),
     path('webhook/', views.webhook, name='webhook'),
+    path('payment_complete/', views.payment_complete, name='payment_complete'),
 ]

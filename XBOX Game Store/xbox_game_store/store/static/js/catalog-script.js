@@ -56,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const gameCard = document.createElement('div');
                     gameCard.classList.add('d-flex', 'mb-5', 'game-card', 'p-3');
                     gameCard.innerHTML = `
-                        <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex">
-                            <img src="${game.image}" class="img-fluid" alt="${game.title}">
-                            <div class="d-flex flex-column">
+                        <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex flex-column flex-sm-row">
+                            <img src="${game.image}" class="rounded mx-auto d-block" alt="${game.title}">
+                            <div class="d-flex flex-column need-margin">
                                 <h3 class="text-white">${game.title}</h3>
                                 <br>
                                 <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>
@@ -140,9 +140,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         const gameCard = document.createElement('div');
                         gameCard.classList.add('d-flex', 'mb-5', 'game-card', 'p-3');
                         gameCard.innerHTML = `
-                            <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex">
-                                <img src="${game.image}" class="img-fluid" alt="${game.title}">
-                                <div class="d-flex flex-column">
+                            <a href="/catalog/game/${game.id}" title="${game.title}" class="d-flex flex-column flex-sm-row">
+                                <img src="${game.image}" class="rounded mx-auto d-block" alt="${game.title}">
+                                <div class="d-flex flex-column need-margin">
                                     <h3 class="text-white">${game.title}</h3>
                                     <br>
                                     <p class="text-white text-justify">${truncateWords(game.description, 49)}</p>

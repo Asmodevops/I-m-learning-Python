@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +29,10 @@ SECRET_KEY = 'django-insecure-#%9(5#@9d##3ihvju-q%%v&@v5+%a$kpgrr4^c5v1ygx--d46m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'bead-185-13-176-135.ngrok-free.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'af70-185-13-176-72.ngrok-free.app']
 
-CSRF_TRUSTED_ORIGINS = ['https://bead-185-13-176-135.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = ['https://af70-185-13-176-72.ngrok-free.app']
+
 
 # Application definition
 
@@ -145,3 +150,16 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'users.authentication.EmailAuthBackend',
 ]
+
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "x.gamestore@yandex.ru"
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
+EMAIL_USE_SSL = True
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
